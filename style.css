@@ -1,0 +1,127 @@
+* {
+    font-family: Roboto;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #34344A;
+    color: white;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+	background-color: black;
+}
+
+.main {
+    flex: 1 1 auto;
+
+    width: 1140px;
+    margin: auto;
+    background-color: #8d99ae;
+    box-shadow: 0 20px 50px black;
+}
+
+.search-area {
+    width: 1140px;
+    text-align: center;
+    background-color: #8d99ae;
+    min-height: 90px;
+    margin-top: 15px;
+}
+
+.search-bar input[type=text] {
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+    outline:none
+}
+
+.search-area button {
+    background-color: #23A962;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 500;
+    height: 35px;
+    list-style: none;
+    outline: none;
+    padding: 0px 16px;
+    margin-left: -4px;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    touch-action: manipulation;
+}
+
+.search-area button:hover,
+.search-area button:focus {
+  background-color: #56dc95;
+  color: #fff;
+}
+
+.category-bar select {
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    font-size: 17px;
+    width: 25.77%;
+    outline:none;
+}
+
+.new-books {
+    padding-left: 1.5%;
+}
+
+.books-name {
+    width: 985px;
+}
+
+.books-name h1 {
+    width: 900px;
+}
+
+.slider {
+    justify-content: center;
+    max-width: 1140px;
+    display: flex;
+    /* overflow: hidden; */
+  }
+
+.btn {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 40px;
+    height: 40px;
+    padding: 1;
+    border: none;
+    border-radius: 50%;
+    padding: 6px;
+    z-index: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 18px;
+}
+  
+.btn:active {
+    transform: scale(1.1);
+}
+  
+.btn-prev {
+    margin-left: 20px;
+    padding-bottom: 20px;
+}
+  
+  .btn-next {
+    margin-right: 20px;
+    padding-bottom: 20px;
+  }
