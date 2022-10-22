@@ -12,17 +12,97 @@
 </head>
 <body>
 
-    
-
     <div class="wrapper">
         <include src="./views/nav-bar.html"></include>
         <div class="main">
+
+            <form action="http://127.0.0.1:5500/index.html">
+                <div class="registracija">
+                  <h1>Reģistrācija</h1>
+                  <p>Ievadiet savus datus lai izveidotu profilu.</p>
+                  <hr>
+              
+                  <label for="e-pasts"><b>E-pasts</b></label>
+                  <input type="text" placeholder="Ievadiet e-pastu" name="e-pasts" id="e-pasts" required onpaste="return false;">
+
+                  <label for="e-pasts"><b>Atkārtojiet E-pastu</b></label>
+                  <input type="text" placeholder="Ievadiet e-pastu vēlreiz" name="e-pasts" id="e-pasts" required onpaste="return false;">
+
+                  <label for="lietotajvards"><b>Lietotājvārds</b></label>
+                  <input type="text" placeholder="Ievadiet lietotājvārdu" name="lietotajvards" id="lietotajvards" required onpaste="return false;">
+              
+                  <label for="parole"><b>Parole</b></label>
+                  <input type="password" placeholder="Ievadiet paroli" name="parole" id="parole" required onpaste="return false;">
+              
+                  <label for="atkartota-parole"><b>Atkārtojiet paroli</b></label>
+                  <input type="password" placeholder="Ievadiet paroli vēlreiz" name="atkartota-parole" id="atkartota-parole" required onpaste="return false;">
+                  <hr>
+              
+                  <p>Veidojot profilu jūs piekrītat <a href="" style="color: rgb(203, 233, 255);">lietošanas un privātuma noteikumiem</a>.</p>
+                  <button type="submit" class="registracijas_poga">Reģistrēties</button>
+                </div>
+              
+                <div class="pieslegties_logs">
+                  <p>Profils jau izveidots? <a href="" style="color: rgb(203, 233, 255);">Pieslēgties</a>.</p>
+                </div>
+            </form>
+
+            <form action="http://127.0.0.1:5500/index.html">
+                <div class="pieslegties">
+                  <h1>Pieslēgties</h1>
+                  <p>Ievadiet lietotājvārdu un paroli.</p>
+                  <hr>
+
+                  <label for="lietotajvards"><b>Lietotājvārds</b></label>
+                  <input type="text" placeholder="Ievadiet lietotājvārdu" name="lietotajvards" id="lietotajvards" required onpaste="return false;">
+              
+                  <label for="parole"><b>Parole</b></label>
+                  <input type="password" placeholder="Ievadiet paroli" name="parole" id="parole" required onpaste="return false;">
+                  <hr>
+              
+                  <p><a href="" style="color: rgb(203, 233, 255);">Aizmirsāt lietotājvārdu un paroli</a>?</p>
+                  <button type="submit" class="pieslegties_poga">Pieslēgties</button>
+                </div>
+              
+                <div class="registracijas_logs">
+                  <p>Neesiet vēl reģistrējušies? <a href="" style="color: rgb(203, 233, 255);">Reģistrēties</a>.</p>
+                </div>
+            </form>
+
+            <form action="http://127.0.0.1:5500/index.html">
+                <div class="atjaunot_paroli">
+                  <h1>Atjaunot paroli</h1>
+                  <p>Ievadiet e-pastu, lai atjaunotu paroli.</p>
+                  <hr>
+
+                  <label for="e-pasts"><b>E-pasts</b></label>
+                  <input type="text" placeholder="Ievadiet e-pastu" name="e-pasts" id="e-pasts" required onpaste="return false;">
+                  <hr>
+              
+                  <button type="submit" class="atjaunot_poga">Atjaunot</button>
+                </div>
+            </form>
+
+            <form action="http://127.0.0.1:5500/index.html">
+                <div class="mainit_paroli">
+                  <h1>Mainīt paroli</h1>
+                  <p>Ievadiet jauno paroli jūsu profilam.</p>
+                  <hr>
+
+                  <label for="parole"><b>Parole</b></label>
+                  <input type="password" placeholder="Ievadiet paroli" name="parole" id="parole" required onpaste="return false;">
+              
+                  <label for="atkartota-parole"><b>Atkārtojiet paroli</b></label>
+                  <input type="password" placeholder="Ievadiet paroli vēlreiz" name="atkartota-parole" id="atkartota-parole" required onpaste="return false;">
+                  <hr>
+              
+                  <button type="submit" class="mainit_poga">Mainīt</button>
+                </div>
+            </form>
             
         </div>
         <include src="./views/footer.html"></include>
     </div>
-
-    
 
     <script src="jquery.js"></script>
 </body>
