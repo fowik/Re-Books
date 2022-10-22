@@ -1,9 +1,11 @@
 .book-cover{
-    margin-right: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
     padding-bottom: 20px;
     margin-top: 0px;
     display: inline-block;
     white-space: nowrap;
+    margin-bottom: 20px;
 }
 
 .book-img {

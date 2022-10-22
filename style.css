@@ -78,8 +78,8 @@ hr {
     outline:none;
 }
 
-.new-books {
-    padding-left: 1.5%;
+.new-books h1 {
+    padding-left: 7.5%;
 }
 
 .books-name {
@@ -90,38 +90,12 @@ hr {
     width: 900px;
 }
 
-.slider {
-    justify-content: center;
-    max-width: 1140px;
+.swiper-slide {
     display: flex;
-    /* overflow: hidden; */
-  }
+    justify-content: center;
+}
 
-.btn {
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 40px;
-    height: 40px;
-    padding: 1;
-    border: none;
-    border-radius: 50%;
-    padding: 6px;
-    z-index: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    font-size: 18px;
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
 }
-  
-.btn:active {
-    transform: scale(1.1);
-}
-  
-.btn-prev {
-    margin-left: 20px;
-    padding-bottom: 20px;
-}
-  
-  .btn-next {
-    margin-right: 20px;
-    padding-bottom: 20px;
-  }
