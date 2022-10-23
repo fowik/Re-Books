@@ -25,9 +25,9 @@ html, body {
 
 /*reģistrēties logs*/
 
-.registracija {
+#registracija {
     text-align: center;
-    padding: 2%;
+    padding-top: 2%;
 }
 
 input[type=text], input[type=password] {
@@ -77,9 +77,9 @@ hr {
 
 /*pieslēgties logs*/
 
-.pieslegties {
+#pieslegties {
     text-align: center;
-    padding: 2%;
+    padding-top: 2%;
 }
 
 input[type=text], input[type=password] {
@@ -129,7 +129,7 @@ hr {
 
 /*mainīt paroli logs*/
 
-.atjaunot_paroli {
+#atjaunot_paroli {
     text-align: center;
     padding: 2%;
 }
@@ -163,7 +163,6 @@ hr {
     background-color: #04AA6D;
     color: white;
     padding: 16px 16px;
-    margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 10%;
@@ -175,7 +174,7 @@ hr {
 
 /*atjaunot paroli logs*/
 
-.mainit_paroli {
+#mainit_paroli {
     text-align: center;
     padding: 2%;
 }

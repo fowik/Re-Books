@@ -31,3 +31,25 @@ var swiper = new Swiper(".mySwiper", {
       prevEl: ".swiper-button-prev",
     },
 });
+
+function pieslegties() { 
+	document.getElementById("registracija").style.display="none"; 
+	document.getElementById("pieslegties").style.display="block"; 
+}
+
+
+function registreties() { 
+	document.getElementById("registracija").style.display="block";
+    document.getElementById("mainit_paroli").style.display="none"; 
+	document.getElementById("pieslegties").style.display="none"; 
+}
+
+function atjaunot_paroli() { 
+	document.getElementById("pieslegties").style.display="none"; 
+	document.getElementById("atjaunot_paroli").style.display="block"; 
+}
+
+function mainit_paroli() { 
+	document.getElementById("atjaunot_paroli").style.display="none"; 
+	document.getElementById("mainit_paroli").style.display="block"; 
+}

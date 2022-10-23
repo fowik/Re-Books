@@ -17,7 +17,7 @@
         <div class="main">
 
             <form action="http://127.0.0.1:5500/index.html">
-                <div class="registracija">
+                <div id="registracija">
                   <h1>Reģistrācija</h1>
                   <p>Ievadiet savus datus lai izveidotu profilu.</p>
                   <hr>
@@ -40,15 +40,15 @@
               
                   <p>Veidojot profilu jūs piekrītat <a href="" style="color: rgb(203, 233, 255);">lietošanas un privātuma noteikumiem</a>.</p>
                   <button type="submit" class="registracijas_poga">Reģistrēties</button>
-                </div>
-              
-                <div class="pieslegties_logs">
-                  <p>Profils jau izveidots? <a href="" style="color: rgb(203, 233, 255);">Pieslēgties</a>.</p>
+
+                  <div class="pieslegties_logs">
+                    <p>Profils jau izveidots? <a style="color: rgb(203, 233, 255); cursor: pointer;" onclick="pieslegties()">Pieslēgties</a>.</p>
+                  </div>
                 </div>
             </form>
 
             <form action="http://127.0.0.1:5500/index.html">
-                <div class="pieslegties">
+                <div id="pieslegties" style="display:none;">
                   <h1>Pieslēgties</h1>
                   <p>Ievadiet lietotājvārdu un paroli.</p>
                   <hr>
@@ -60,32 +60,31 @@
                   <input type="password" placeholder="Ievadiet paroli" name="parole" id="parole" required onpaste="return false;">
                   <hr>
               
-                  <p><a href="" style="color: rgb(203, 233, 255);">Aizmirsāt lietotājvārdu un paroli</a>?</p>
+                  <p><a style="color: rgb(203, 233, 255); cursor: pointer;" onclick="atjaunot_paroli()">Aizmirsāt lietotājvārdu un paroli</a>?</p>
                   <button type="submit" class="pieslegties_poga">Pieslēgties</button>
-                </div>
-              
-                <div class="registracijas_logs">
-                  <p>Neesiet vēl reģistrējušies? <a href="" style="color: rgb(203, 233, 255);">Reģistrēties</a>.</p>
-                </div>
-            </form>
 
-            <form action="http://127.0.0.1:5500/index.html">
-                <div class="atjaunot_paroli">
-                  <h1>Atjaunot paroli</h1>
-                  <p>Ievadiet e-pastu, lai atjaunotu paroli.</p>
-                  <hr>
-
-                  <label for="e-pasts"><b>E-pasts</b></label>
-                  <input type="text" placeholder="Ievadiet e-pastu" name="e-pasts" id="e-pasts" required onpaste="return false;">
-                  <hr>
-              
-                  <button type="submit" class="atjaunot_poga">Atjaunot</button>
+                                
+                  <div class="registracijas_logs">
+                    <p>Neesiet vēl reģistrējušies? <a style="color: rgb(203, 233, 255); cursor: pointer;" onclick="registreties()">Reģistrēties</a>.</p>
+                  </div>
                 </div>
             </form>
 
-            <form action="http://127.0.0.1:5500/index.html">
-                <div class="mainit_paroli">
-                  <h1>Mainīt paroli</h1>
+              <div id="atjaunot_paroli" style="display:none;">
+                <h1 style="margin-top:10%;">Atjaunot paroli</h1>
+                <p>Ievadiet e-pastu, lai atjaunotu paroli.</p>
+                <hr>
+
+                <label for="e-pasts"><b>E-pasts</b></label>
+                <input type="text" placeholder="Ievadiet e-pastu" name="e-pasts" id="e-pasts" required onpaste="return false;">
+                <hr>
+              
+                <button type="submit" class="atjaunot_poga" onclick="mainit_paroli()">Atjaunot</button>
+              </div>
+
+            <form action="http://127.0.0.1:5500/register.html">
+                <div id="mainit_paroli" style="display:none;">
+                  <h1 style="margin-top:5%;">Mainīt paroli</h1>
                   <p>Ievadiet jauno paroli jūsu profilam.</p>
                   <hr>
 
