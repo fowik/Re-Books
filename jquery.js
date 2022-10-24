@@ -19,18 +19,14 @@ function bookRedirect() {
 }
 
 var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
+    slidesPerView: 5,
+    spaceBetween: 20,
+    freeMode: true,
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      hide: true,
     },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-});
+  });
 
 function pieslegties() { 
 	document.getElementById("registracija").style.display="none"; 

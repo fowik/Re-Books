@@ -79,7 +79,7 @@ hr {
 }
 
 .new-books h1 {
-    padding-left: 7.5%;
+    padding-left: 5%;
 }
 
 .books-name {
@@ -93,6 +93,7 @@ hr {
 .swiper-slide {
     display: flex;
     justify-content: center;
+    margin-right: 0;
 }
 
 .swiper {
