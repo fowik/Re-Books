@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/nav-bar.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/book.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
     <title>Re-Books</title>
@@ -27,8 +28,8 @@
                 </div>
                 <div class="category-bar">
                     <select name="category" id="category">
-                        <option value="category">Kategorijas</option>
-                        <option value="volvo">Drama</option>
+                        <option value="category" disabled selected>Kategorijas</option>
+                        <option value="drama">Drama</option>
                     </select>
                 </div>
             </div>
@@ -95,11 +96,9 @@
                     </div>
                 </div>
             </div>
-
+        </div>
         <include src="/views/footer.html"></include>
         
-        </div>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="jquery.js"></script>

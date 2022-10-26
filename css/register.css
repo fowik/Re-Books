@@ -1,28 +1,3 @@
-* {
-    font-family: Roboto;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    background-color: #34344A;
-    color: white;
-}
-
-.wrapper {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.main {
-    flex: 1 1 auto;
-    width: 1140px;
-    margin: auto;
-    background-color: #8d99ae;
-    box-shadow: 0 20px 50px black;
-}
-
 /*reģistrēties logs*/
 
 #registracija {

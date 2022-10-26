@@ -1,0 +1,76 @@
+hr {
+	background-color: black;
+}
+
+.search-area {
+    width: 1140px;
+    text-align: center;
+    background-color: #8d99ae;
+    min-height: 90px;
+    margin-top: 15px;
+}
+
+.search-bar input[type=text] {
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+    outline:none
+}
+
+.search-area button {
+    background-color: #23A962;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 500;
+    height: 35px;
+    list-style: none;
+    outline: none;
+    padding: 0px 16px;
+    margin-left: -4px;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    touch-action: manipulation;
+}
+
+.search-area button:hover,
+.search-area button:focus {
+  background-color: #56dc95;
+  color: #fff;
+}
+
+.category-bar select {
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    font-size: 17px;
+    width: 25.77%;
+    outline:none;
+}
+
+.new-books h1 {
+    padding-left: 5%;
+}
+
+.books-name {
+    width: 985px;
+}
+
+.books-name h1 {
+    width: 900px;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+}
