@@ -53,3 +53,11 @@
     padding-top: 20px;
     padding-left: 60px;
 }
+
+.checked {
+    color: orange;
+}
+
+.fa-star:hover {
+    color: orange;
+}

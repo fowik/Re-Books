@@ -1,0 +1,68 @@
+.container {
+    width: 200px;
+    text-align: center;
+    background-color: #6f7b919d;
+    min-height: 65vh;
+}
+
+.vl {
+    border-right: 1px solid rgba(255, 255, 255, 0.856);
+}
+
+.hl {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.856);;
+}
+h2 {
+    padding: 0px;
+}
+
+h1 span {
+    color:  #5383d3;
+}
+
+.title {
+    padding-top: 0.1px;
+
+}
+
+/* .title:hover {
+    background-color: #6f7b91;
+} */
+
+.books {
+    padding-top: 0.1%;
+}
+
+.books:hover {
+    background-color: #6f7b91;
+}
+
+.information-container {
+    width: 940px;
+    float: right;
+    margin-top: -65vh;
+}
+
+.leave-button {
+    padding-top: -200px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.books-table {
+    width: 800px;
+    height: 450px;
+    background-color: black;
+    margin-top: 100px;
+    margin-left: 70px;
+}
+
+.buttons-left {
+    margin-top: 30px;
+    margin-left: 70px;
+}
+
+.buttons-left button {
+    margin-right: 30px;
+}

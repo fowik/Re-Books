@@ -2,13 +2,16 @@
     width: 200px;
     text-align: center;
     background-color: #6f7b919d;
-    height: 65vh;
+    min-height: 65vh;
 }
 
-/* .vl {
+.vl {
     border-right: 1px solid rgba(255, 255, 255, 0.856);
-} */
+}
 
+.hl {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.856);;
+}
 h2 {
     padding: 0px;
 }
