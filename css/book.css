@@ -11,28 +11,29 @@
 .book-img {
     height: 220px;
     width: 170px;
-    border: 1px solid;
+    /* border: 1px solid; */
     border-color: black;
     /* border-top-left-radius: 10px;
     border-top-right-radius: 10px; */
+    box-shadow: 0px 5px 5px black;
 }
 
 .book-title {
-    background-color: white;
-    color: black;
+    
+    color: white;
     width: 170px;
     min-height: 40px;
     margin-top: -2px;
-    border: 1px solid;
-    border-color: black;
-    font-weight: 800;
+    /* border: 1px solid;
+    border-color: black; */
+    font-weight: 500;
     /* border-end-start-radius: 10px;
     border-end-end-radius: 10px; */
 }
 
 .book-name {
     font-size: 14px;
-    margin-top: 0px;
+    margin-top: 8px;
     margin-left: 4px;
 }
 
