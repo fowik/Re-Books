@@ -48,6 +48,16 @@ h1 span {
     float: right;
     margin-right: 20px;
     margin-top: 20px;
+    background-color: #04AA6D;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+.leave-button:hover {
+    background-color: #028354;
 }
 
 .books-table {
@@ -65,4 +75,17 @@ h1 span {
 
 .buttons-left button {
     margin-right: 30px;
+}
+
+.delete-button {
+    background-color: #aa0404;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+.delete-button:hover {
+    background-color: #830202;
 }
