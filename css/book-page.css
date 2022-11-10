@@ -10,6 +10,7 @@
     box-shadow: 0px 5px 5px black;
     /* border-top-left-radius: 10px;
     border-top-right-radius: 10px; */
+    user-select: none;
 }
 
 .book-content {

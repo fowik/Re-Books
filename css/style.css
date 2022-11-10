@@ -23,3 +23,8 @@ html, body {
     background-color: #8d99ae;
     box-shadow: 0 20px 50px black;
 }
+
+::selection {
+    color: black;
+    background-color: #fce277;
+}
