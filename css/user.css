@@ -63,7 +63,7 @@ h1 span {
 .books-table {
     width: 85%;
     min-height: 450px;
-    background-color: white;
+    background-color: #7A879C;
     margin-top: 100px;
     margin-left: 70px;
     border-radius: 5px;
@@ -122,6 +122,7 @@ h1 span {
 .fav-book:hover {
     background-color: #6f7b91;
 }
+
 .fav-book h2{
     margin: 0;
     width: 30%;
