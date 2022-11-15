@@ -27,12 +27,13 @@
                             <h1>Re-<span>Books</span></h1>
                         </div>
                     <!-- </a> -->
-                    <a href="#">
+                    <a href="#" onclick="books()">
                         <div class="books hl"> 
                             <h2>Grāmatas</h2>
                         </div>
                     </a>
-                    <a href="#">
+
+                    <a href="#" onclick="users()">
                         <div class="users hl">
                             <h2>Lietotāji</h2>
                         </div>
@@ -42,15 +43,32 @@
 
                     <button class="leave-button">Iziet</button>
 
-                    <div class="books-table scroll">
+                    <div class="books-table scroll" id="books">
                         <div class="fav-book-container">
                             <include src="fav-book-admin.html"></include>
-
-                        
-
+                            <include src="fav-book-admin.html"></include>
+                            <include src="fav-book-admin.html"></include>
+                            <include src="fav-book-admin.html"></include>
+                            <include src="fav-book-admin.html"></include>
+                            <include src="fav-book-admin.html"></include>
+                            <include src="fav-book-admin.html"></include>
+                            <include src="fav-book-admin.html"></include>
                         </div>
                     </div>
                     
+                    <div class="books-table scroll" id="users" style="display:none;">
+                        <div class="fav-book-container">
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                            <include src="username-admin.html"></include>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
