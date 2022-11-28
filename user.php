@@ -14,7 +14,7 @@
 <body>
 
     <div class="wrapper">
-        <include src="./views/nav-bar.html"></include>
+        <?php include 'views/Nav-Bar.html';?>
 
         <div class="main">
             <div>
@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <include src="./views/footer.html"></include>
+        <?php include 'views/footer.html';?>
 
     </div>
 

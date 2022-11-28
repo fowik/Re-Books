@@ -14,7 +14,9 @@
 <body>
 
     <div class="wrapper">
-        <include src="./views/nav-bar.html"></include>
+
+      <?php include 'views/Nav-Bar.html';?>
+
         <div class="main">
 
             <form action="http://127.0.0.1:5500/index.html">
@@ -101,7 +103,9 @@
             </form>
             
         </div>
-        <include src="./views/footer.html"></include>
+
+        <?php include 'views/footer.html';?>
+        
     </div>
 
     <script src="jquery.js"></script>

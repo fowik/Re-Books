@@ -13,13 +13,17 @@
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <title>History of Rēbuks</title>
 </head>
+
 <body>
-    <include src="/views/nav-bar.html"></include>
+
+    <?php include 'views/Nav-Bar.html';?>
+
     <div class="wrapper">
 
         <div class="main">
             <div class="book-view">
-                <include src="book-for-page.html"></include>
+
+                <?php include 'book-for-page.html';?>
                     <div class="book-content">
                     <h1>History of Rēbuks</h1>
                     <h2>Autors: Gundars Rēbuks</h2>
@@ -44,7 +48,8 @@
             </div>
         </div>
 
-        <include src="/views/footer.html"></include>
+        <?php include 'views/footer.html';?>
+
     </div>
     
     <script src="./jquery.js"></script>

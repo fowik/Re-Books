@@ -18,7 +18,7 @@
 
     <div class="wrapper">
         
-        <include src="/views/nav-bar.html"></include>
+        <?php include 'views/Nav-Bar.html';?>
         
         <div class="main">
 
@@ -40,22 +40,13 @@
                     <h1>Jaunākās</h1>
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
                         </div>
                         <div class="swiper-scrollbar"></div>
                     </div>
@@ -67,16 +58,13 @@
                     <h1>Visaugstāk novērtētās</h1>
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
                         </div>
                         <div class="swiper-scrollbar"></div>
                     </div>
@@ -88,23 +76,21 @@
                     <h1>Populārākās</h1>
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
-                            <include src="book.html"></include>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
+                            <?php include 'book.html';?>
                         </div>
                         <div class="swiper-scrollbar"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <include src="/views/footer.html"></include>
+
+        <?php include 'views/footer.html';?>
         
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
