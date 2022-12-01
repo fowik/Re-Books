@@ -19,17 +19,17 @@
 
         <div class="main">
 
-            <form action="http://127.0.0.1:5500/index.html">
+            <form action="./back-end/register.php" method="POST">
                 <div id="registracija">
                   <h1>Reģistrācija</h1>
                   <p>Ievadiet savus datus lai izveidotu profilu.</p>
                   <hr>
               
                   <label for="e-pasts"><b>E-pasts</b></label>
-                  <input type="text" placeholder="Ievadiet e-pastu" name="e-pasts" id="e-pasts" required onpaste="return false;">
+                  <input type="text" placeholder="Ievadiet e-pastu" name="epasts" id="e-pasts" required onpaste="return false;">
 
                   <label for="e-pasts"><b>Atkārtojiet E-pastu</b></label>
-                  <input type="text" placeholder="Ievadiet e-pastu vēlreiz" name="e-pasts" id="e-pasts" required onpaste="return false;">
+                  <input type="text" placeholder="Ievadiet e-pastu vēlreiz" name="atkartots_epasts" id="e-pasts" required onpaste="return false;">
 
                   <label for="lietotajvards"><b>Lietotājvārds</b></label>
                   <input type="text" placeholder="Ievadiet lietotājvārdu" name="lietotajvards" id="lietotajvards" required onpaste="return false;">
@@ -38,11 +38,21 @@
                   <input type="password" placeholder="Ievadiet paroli" name="parole" id="parole" required onpaste="return false;">
               
                   <label for="atkartota-parole"><b>Atkārtojiet paroli</b></label>
-                  <input type="password" placeholder="Ievadiet paroli vēlreiz" name="atkartota-parole" id="atkartota-parole" required onpaste="return false;">
+                  <input type="password" placeholder="Ievadiet paroli vēlreiz" name="atkartota_parole" id="atkartota-parole" required onpaste="return false;">
+
+                  <?php
+                    if (isset($success) && $success == true){
+                      echo '<p>Jūsu profils tika izveidots veiksmīgi!</p>';
+                    }
+                    else if (isset($error))
+                      echo '<font color="red">'. $error . '</font>';
+                    else
+                      echo '';
+                  ?>
+
                   <hr>
-              
                   <p>Veidojot profilu jūs piekrītat <a href="" style="color: rgb(203, 233, 255);">lietošanas un privātuma noteikumiem</a>.</p>
-                  <button type="submit" class="registracijas_poga">Reģistrēties</button>
+                  <button type="submit" name="RegPoga" class="registracijas_poga">Reģistrēties</button>
 
                   <div class="pieslegties_logs">
                     <p>Profils jau izveidots? <a style="color: rgb(203, 233, 255); cursor: pointer;" onclick="pieslegties()">Pieslēgties</a>.</p>
