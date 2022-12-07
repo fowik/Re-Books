@@ -1,16 +1,16 @@
 <?php
 
 //Include required PHPMailer files
-	require 'back-end/PHPMailer.php';
-	require 'back-end/SMTP.php';
-	require 'back-end/Exception.php';
+	require 'PHPMailer.php';
+	require 'SMTP.php';
+	require 'Exception.php';
 //Define name spaces
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
 
 	if($_POST) {
-
+		
 		$email = "";
 		$message = "";
 		$my_email = "emilsstrelis360@gmail.com";

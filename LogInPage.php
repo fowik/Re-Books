@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +21,15 @@
       <?php include 'views/Nav-Bar.html';?>
 
         <div class="main">
-
             <form action="./back-end/register.php" method="POST">
                 <div id="registracija">
                   <h1>Reģistrācija</h1>
+                  <?php
+                    if(!empty($_SESSION["error"])){
+                      echo "<p>{$_SESSION["error"]}</p>";
+                      unset($_SESSION["error"]);
+                    }
+                  ?>
                   <p>Ievadiet savus datus lai izveidotu profilu.</p>
                   <hr>
               
@@ -40,16 +48,6 @@
                   <label for="atkartota-parole"><b>Atkārtojiet paroli</b></label>
                   <input type="password" placeholder="Ievadiet paroli vēlreiz" name="atkartota_parole" id="atkartota-parole" required onpaste="return false;">
 
-                  <?php
-                    if (isset($success) && $success == true){
-                      echo '<p>Jūsu profils tika izveidots veiksmīgi!</p>';
-                    }
-                    else if (isset($error))
-                      echo '<font color="red">'. $error . '</font>';
-                    else
-                      echo '';
-                  ?>
-
                   <hr>
                   <p>Veidojot profilu jūs piekrītat <a href="" style="color: rgb(203, 233, 255);">lietošanas un privātuma noteikumiem</a>.</p>
                   <button type="submit" name="RegPoga" class="registracijas_poga">Reģistrēties</button>
@@ -60,7 +58,7 @@
                 </div>
             </form>
 
-            <form action="index.html">
+            <form action="./back-end/login.php" method="POST">
                 <div id="pieslegties" style="display:none;">
                   <h1>Pieslēgties</h1>
                   <p>Ievadiet lietotājvārdu un paroli.</p>
@@ -71,10 +69,16 @@
               
                   <label for="parole"><b>Parole</b></label>
                   <input type="password" placeholder="Ievadiet paroli" name="parole" id="parole" required onpaste="return false;">
+                  <?php
+                  if(!empty($_SESSION["error"])){
+                      echo "<p>{$_SESSION["error"]}</p>";
+                      unset($_SESSION["error"]);
+                    }
+                  ?>
                   <hr>
-              
+                  
                   <p><a style="color: rgb(203, 233, 255); cursor: pointer;" onclick="atjaunot_paroli()">Aizmirsāt lietotājvārdu un paroli</a>?</p>
-                  <button type="submit" class="pieslegties_poga">Pieslēgties</button>
+                  <button type="submit" name="Pieslegties" class="pieslegties_poga">Pieslēgties</button>
 
                                 
                   <div class="registracijas_logs">
@@ -117,7 +121,12 @@
         <?php include 'views/footer.html';?>
         
     </div>
-
+    <?php
+          if(!empty($_SESSION["change"])){
+            echo "<script type=\"text/javascript\">{$_SESSION["change"]}</script>";
+            unset($_SESSION["change"]);
+          }
+    ?>
     <script src="jquery.js"></script>
 </body>
 </html>
