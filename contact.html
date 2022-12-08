@@ -1,4 +1,7 @@
 <style>
+    * {
+        font-family: Roboto;
+    }
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -53,7 +56,34 @@
     .footer {
         font-size: 14px;
     }
+    .access-wrapper {
+    color: white;
+    background-color: #04AA6D; 
+    width: 100%; 
+    height: 60px; 
+    line-height: 60px;
+}
 
+.access-message {
+    font-size: 20px;
+    padding-top: auto;
+    padding-bottom: auto;
+    margin-left: 20px;
+}
+
+.close-button {
+    font-size: 30px; 
+    float: right;
+    margin-right: 20px;
+    margin-top: 12px;
+    background: none;
+    border: none;
+    color: white;
+}
+
+.close-button::selection {
+    color: black;
+}
 </style>
     <div class="wrapper">
         <div class="main">
@@ -72,5 +102,12 @@
                 <b>Ja vairs nevēlaties saņemt e-pasta ziņojumus no Re-Books, lūdzu, atsakiet abonēšanu šeit. Šo ziņojumu nosūtīja uzņēmums Re-Books, adrese Rothusstrasse 17, 6331 Hünenberg, Šveice.</b>
                 <b>@Re-Books Visas tiesības aizsargātas</b>
             </label>
+        </div>
+    </div>
+
+    <div class ="access-wrapper">
+        <div class="access-message">
+            Jūsu ziņojums tika veiksmīgi nosūtīts!
+            <button class="close-button" id="close-button">X</button>
         </div>
     </div>

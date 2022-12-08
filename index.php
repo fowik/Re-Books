@@ -18,7 +18,7 @@
 
     <div class="wrapper">
         
-        <?php include 'views/Nav-Bar.html';?>
+        <?php include 'views/nav-bar.php';?>
         
         <div class="main">
 
@@ -89,8 +89,8 @@
                 </div>
             </div>
         </div>
-
-        <?php include 'views/footer.php';?>
+        
+        <?php include 'views/footer.html';?>
         
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

@@ -18,7 +18,7 @@ session_start();
 
     <div class="wrapper">
 
-      <?php include 'views/Nav-Bar.html';?>
+      <?php include 'views/Nav-Bar.php';?>
 
         <div class="main">
             <form action="./back-end/register.php" method="POST">

@@ -46,3 +46,10 @@ function users() {
     document.getElementById("users").style.display="block";
     document.getElementById("books").style.display="none";
 }
+
+function hide() {
+    var div = document.getElementById('access-wrapper');
+    div.style.display = 'none';
+}
+
+

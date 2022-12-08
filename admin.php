@@ -17,7 +17,7 @@
 
     <div class="wrapper">
 
-        <?php include 'views/Nav-Bar.html';?>
+        <?php include 'views/Nav-Bar.php';?>
 
         <div class="main">
             <div>
