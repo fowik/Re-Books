@@ -1,0 +1,76 @@
+<style>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: #33383b;
+        color: white;
+        min-height:300px;
+        width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+        font-size: 20px;
+    }
+
+    .main {
+        /* justify-content: center; */
+        margin-right: auto;
+        margin-left: auto;
+        width: 600px;
+        
+    }
+
+    label {
+        color: #8f9296;
+    }
+
+    .name {
+        height: 200px;
+        font-size: 48px;
+    }
+
+    .name span{
+        color:  #5383d3;
+        width: 600px;
+
+    }
+
+    .e-mail {
+        display: flex;
+        margin-left: 20px;
+    }
+
+    .message label{
+        display: flex;
+        margin-left: 20px;
+    }
+
+    .message {
+        display: fixed;
+        margin-right: 76%;
+    }
+    
+    .footer {
+        font-size: 14px;
+    }
+
+</style>
+    <div class="wrapper">
+        <div class="main">
+            <div class="name">
+                <h1><span>Re</span>-Books</h1>
+            </div>
+            <div class="e-mail">
+                <label><b>E-mail:</b></label>&nbsp;<span>".$email."</span>
+            </div>
+            <div class="message">
+                <label><b>Message:</b></label>
+                <div class="message-text">".$message."</div>
+            </div>
+            <label class="footer">
+                <b>Jūs saņēmāt šo e-pasta ziņojumu, kas nosūtīta uz adresi to-address, jo esat reģistrējies (-usies) mūsu Re-Books lietotnē.</b>
+                <b>Ja vairs nevēlaties saņemt e-pasta ziņojumus no Re-Books, lūdzu, atsakiet abonēšanu šeit. Šo ziņojumu nosūtīja uzņēmums Re-Books, adrese Rothusstrasse 17, 6331 Hünenberg, Šveice.</b>
+                <b>@Re-Books Visas tiesības aizsargātas</b>
+            </label>
+        </div>
+    </div>

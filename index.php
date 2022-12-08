@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <?php include 'views/footer.html';?>
+        <?php include 'views/footer.php';?>
         
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
