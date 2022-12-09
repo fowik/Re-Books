@@ -1,90 +1,101 @@
-<style>
-    * {
-        font-family: Roboto;
-    }
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        background-color: #33383b;
-        color: white;
-        min-height:300px;
-        width: 600px;
-        margin-right: auto;
-        margin-left: auto;
-        font-size: 20px;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .main {
-        /* justify-content: center; */
-        margin-right: auto;
-        margin-left: auto;
-        width: 600px;
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Roboto;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            background-color: #33383b;
+            color: white;
+            min-height: 300px;
+            width: 600px;
+            margin-right: auto;
+            margin-left: auto;
+            font-size: 20px;
+        }
+    
+        .main {
+            /* justify-content: center; */
+            margin-right: auto;
+            margin-left: auto;
+            width: 600px;
+            
+        }
+    
+        label {
+            color: #8f9296;
+        }
+    
+        .name {
+            height: 200px;
+            font-size: 48px;
+        }
+    
+        .name span{
+            color:  #5383d3;
+            width: 600px;
+    
+        }
+    
+        .e-mail {
+            display: flex;
+            margin-left: 20px;
+        }
+    
+        .message label{
+            display: flex;
+            margin-left: 20px;
+        }
+    
+        .message {
+            display: fixed;
+            margin-right: 76%;
+        }
         
-    }
-
-    label {
-        color: #8f9296;
-    }
-
-    .name {
-        height: 200px;
-        font-size: 48px;
-    }
-
-    .name span{
-        color:  #5383d3;
-        width: 600px;
-
-    }
-
-    .e-mail {
-        display: flex;
-        margin-left: 20px;
-    }
-
-    .message label{
-        display: flex;
-        margin-left: 20px;
-    }
-
-    .message {
-        display: fixed;
-        margin-right: 76%;
+        .footer {
+            margin-top: 100px;
+            font-size: 14px;
+        }
+        .access-wrapper {
+        color: white;
+        background-color: #04AA6D; 
+        width: 100%; 
+        height: 60px; 
+        line-height: 60px;
     }
     
-    .footer {
-        font-size: 14px;
+    .access-message {
+        font-size: 20px;
+        padding-top: auto;
+        padding-bottom: auto;
+        margin-left: 20px;
     }
-    .access-wrapper {
-    color: white;
-    background-color: #04AA6D; 
-    width: 100%; 
-    height: 60px; 
-    line-height: 60px;
-}
-
-.access-message {
-    font-size: 20px;
-    padding-top: auto;
-    padding-bottom: auto;
-    margin-left: 20px;
-}
-
-.close-button {
-    font-size: 30px; 
-    float: right;
-    margin-right: 20px;
-    margin-top: 12px;
-    background: none;
-    border: none;
-    color: white;
-}
-
-.close-button::selection {
-    color: black;
-}
-</style>
+    
+    .close-button {
+        font-size: 30px; 
+        float: right;
+        margin-right: 20px;
+        margin-top: 12px;
+        background: none;
+        border: none;
+        color: white;
+    }
+    
+    .close-button::selection {
+        color: black;
+    }
+    </style>
+</head>
+<body>
     <div class="wrapper">
         <div class="main">
             <div class="name">
@@ -104,10 +115,7 @@
             </label>
         </div>
     </div>
+</body>
+</html>
 
-    <div class ="access-wrapper">
-        <div class="access-message">
-            Jūsu ziņojums tika veiksmīgi nosūtīts!
-            <button class="close-button" id="close-button">X</button>
-        </div>
-    </div>
+    

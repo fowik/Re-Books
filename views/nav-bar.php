@@ -21,34 +21,23 @@
 		
 		$email = "";
 		$message = "";
-		$my_email = "emilsstrelis360@gmail.com";
-		// $my_email = "ilarimsa937@gmail.com";
+		// $my_email = "emilsstrelis360@gmail.com";
+		$my_email = "ilarimsa937@gmail.com";
 		
-		//Create instance of PHPMailer
 		$mail = new PHPMailer();
-		
-		//Set mailer to use smtp
 		$mail->isSMTP();
-		
-		//Define smtp host
 		$mail->Host = "smtp.gmail.com";
-		
-		//Enable smtp authentication
 		$mail->SMTPAuth = true;
-		
-		//Set smtp encryption type (ssl/tls)
 		$mail->SMTPSecure = "tls";
-		
-		//Port to connect smtp
 		$mail->Port = "587";
 		
 		//Set gmail username
-		$mail->Username = "emilsstrelis360@gmail.com";
-		// $mail->Username = "ilarimsa937@gmail.com";
+		// $mail->Username = "emilsstrelis360@gmail.com";
+		$mail->Username = "ilarimsa937@gmail.com";
 		
 		//Set gmail password
-		$mail->Password = "cofxornytlvsojmk";
-		// $mail->Password = "rxexlgukwdrzgmkt";
+		// $mail->Password = "cofxornytlvsojmk";
+		$mail->Password = "rxexlgukwdrzgmkt";
 		
 		//Email message
 		if(isset($_POST['message'])) {
@@ -72,19 +61,131 @@
 		//Email body
 		$mail->Body = 
 		"
-		<div>
-			<label><b>E-mail:</b></label>&nbsp;<span>".$email."</span>
-		</div>
-		<div>
-			<label><b>Message:</b></label>
-				<div>".$message."</div>
-		</div>
+		<!DOCTYPE html>
+		<html lang='en'>
+		<head>
+			<meta charset='UTF-8'>
+			<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+			<title>Document</title>
+			<style>
+				* {
+					font-family: Roboto;
+				}
+				.wrapper {
+					display: flex;
+					flex-direction: column;
+					text-align: center;
+					background-color: #33383b;
+					color: white;
+					min-height: 300px;
+					width: 600px;
+					margin-right: auto;
+					margin-left: auto;
+					font-size: 20px;
+				}
+			
+				.main {
+					/* justify-content: center; */
+					margin-right: auto;
+					margin-left: auto;
+					width: 600px;
+					
+				}
+			
+				label {
+					color: #8f9296;
+				}
+			
+				.name {
+					height: 200px;
+					font-size: 48px;
+				}
+			
+				.name span{
+					color:  #5383d3;
+					width: 600px;
+			
+				}
+			
+				.e-mail {
+					display: flex;
+					margin-left: 20px;
+				}
+			
+				.message label{
+					display: flex;
+					margin-left: 20px;
+				}
+			
+				.message {
+					display: fixed;
+					margin-right: 76%;
+				}
+				
+				.footer {
+					margin-top: 100px;
+					font-size: 14px;
+				}
+				.access-wrapper {
+				color: white;
+				background-color: #04AA6D; 
+				width: 100%; 
+				height: 60px; 
+				line-height: 60px;
+				}
+				
+				.access-message {
+					font-size: 20px;
+					padding-top: auto;
+					padding-bottom: auto;
+					margin-left: 20px;
+				}
+				
+				.close-button {
+					font-size: 30px; 
+					float: right;
+					margin-right: 20px;
+					margin-top: 12px;
+					background: none;
+					border: none;
+					color: white;
+				}
+				
+				.close-button::selection {
+					color: black;
+				}
+			</style>
+		</head>
+		<body>
+			<div class='wrapper'>
+				<div class='main'>
+					<div class='name'>
+						<h1><span>Re</span>-Books</h1>
+					</div>
+					<div class='e-mail'>
+						<label><b>E-mail:</b></label>&nbsp;<span>".$email."</span>
+					</div>
+					<div class='message'>
+						<label><b>Message:</b></label>
+						<div class='message-text'>".$message."</div>
+					</div>
+					<label class='footer'>
+						<b>Jūs saņēmāt šo e-pasta ziņojumu, kas nosūtīta uz adresi to-address, jo esat reģistrējies (-usies) mūsu Re-Books lietotnē.</b>
+						<b>Ja vairs nevēlaties saņemt e-pasta ziņojumus no Re-Books, lūdzu, atsakiet abonēšanu šeit. Šo ziņojumu nosūtīja uzņēmums Re-Books, adrese Rothusstrasse 17, 6331 Hünenberg, Šveice.</b>
+						<b>@Re-Books Visas tiesības aizsargātas</b>
+					</label>
+				</div>
+			</div>
+		</body>
+		</html>
 		
 		";
 		
 		//Add recipient
-		$mail->addAddress('emilsstrelis360@gmail.com');
-		// $mail->addAddress('ilarimsa937@gmail.com');
+		// $mail->addAddress('emilsstrelis360@gmail.com');
+		$mail->addAddress('ilarimsa937@gmail.com');
 		
 		//Finally send email
 		if ( $mail->send() ) {
