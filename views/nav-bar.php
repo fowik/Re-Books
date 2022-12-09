@@ -67,7 +67,7 @@
 			<meta charset='UTF-8'>
 			<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-
+		
 			<title>Document</title>
 			<style>
 				* {
@@ -101,6 +101,7 @@
 				.name {
 					height: 200px;
 					font-size: 48px;
+					margin-bottom: 20%;
 				}
 			
 				.name span{
@@ -117,44 +118,22 @@
 				.message label{
 					display: flex;
 					margin-left: 20px;
+					margin-right: 76.2%;
 				}
 			
-				.message {
-					display: fixed;
-					margin-right: 76%;
-				}
-				
-				.footer {
-					margin-top: 100px;
-					font-size: 14px;
-				}
-				.access-wrapper {
-				color: white;
-				background-color: #04AA6D; 
-				width: 100%; 
-				height: 60px; 
-				line-height: 60px;
-				}
-				
-				.access-message {
-					font-size: 20px;
-					padding-top: auto;
-					padding-bottom: auto;
+				.message-text {
+					display: flex;
 					margin-left: 20px;
 				}
 				
-				.close-button {
-					font-size: 30px; 
-					float: right;
-					margin-right: 20px;
-					margin-top: 12px;
-					background: none;
-					border: none;
-					color: white;
-				}
-				
-				.close-button::selection {
-					color: black;
+				.footer {
+					color: #8f9296;
+					margin-right: auto;
+					margin-left: auto;
+					margin-top: 20%;
+                    margin-bottom: 40px;
+					font-size: 14px;
+					width: 300px;
 				}
 			</style>
 		</head>
@@ -171,16 +150,14 @@
 						<label><b>Message:</b></label>
 						<div class='message-text'>".$message."</div>
 					</div>
-					<label class='footer'>
-						<b>Jūs saņēmāt šo e-pasta ziņojumu, kas nosūtīta uz adresi to-address, jo esat reģistrējies (-usies) mūsu Re-Books lietotnē.</b>
-						<b>Ja vairs nevēlaties saņemt e-pasta ziņojumus no Re-Books, lūdzu, atsakiet abonēšanu šeit. Šo ziņojumu nosūtīja uzņēmums Re-Books, adrese Rothusstrasse 17, 6331 Hünenberg, Šveice.</b>
-						<b>@Re-Books Visas tiesības aizsargātas</b>
-					</label>
+					<div class='footer'>
+						<div>Jūs saņēmāt šo e-pasta ziņojumu, kas nosūtīta uz adresi ".$email.", jo esat reģistrējies (-usies) mūsu Re-Books lietotnē.</div>
+						<div>@Re-Books Visas tiesības aizsargātas</div>
+					</div>
 				</div>
 			</div>
 		</body>
 		</html>
-		
 		";
 		
 		//Add recipient
