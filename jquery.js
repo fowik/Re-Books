@@ -39,12 +39,34 @@ function mainit_paroli() {
 
 function books() {
     document.getElementById("books").style.display="block";
+    document.getElementById("add-button").style.display="block";
     document.getElementById("users").style.display="none";
 }
 
 function users() {
     document.getElementById("users").style.display="block";
+    document.getElementById("add-button").style.display="none";
     document.getElementById("books").style.display="none";
+}
+
+function addBook() {
+    var popup = document.getElementById("addPopup");
+    popup.style.display="block";
+}
+
+function closePopup() {
+    var popup = document.getElementById("addPopup");
+    popup.style.display="none";
+}
+
+function editBook() {
+    var popup = document.getElementById("editPopup");
+    popup.style.display="block";
+}
+
+function closePopup() {
+    var popup = document.getElementById("editPopup");
+    popup.style.display="none";
 }
 
 function hide() {
