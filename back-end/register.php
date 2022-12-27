@@ -20,19 +20,19 @@
         exit();
     }
 
-    if (!($parole === $atkartota_parole)){
+    if (!($parole === $atkartota_parole)) {
         $_SESSION["error"] = 'Jūsu parole nesakrīt!';
         header("Location: ../LogInPage.php");
         exit();
     }
     
-    if (!($epasts === $atkartots_epasts)){
+    if (!($epasts === $atkartots_epasts)) {
         $_SESSION["error"] = 'Jūsu e-pasta adrese nesakrīt! ' . $epasts . "1" . $atkartots_epasts . "2" . $parole . "3" . $atkartota_parole . "4" . $lietotajvards;
         header("Location: ../LogInPage.php");
         exit();
     }
                 
-    if (!filter_var($epasts, FILTER_VALIDATE_EMAIL)){
+    if (!filter_var($epasts, FILTER_VALIDATE_EMAIL)) {
         $_SESSION["error"] = 'Jūs neesat ievadijuši pareizu e-pastu!';
         header("Location: ../LogInPage.php");
         exit();
@@ -45,13 +45,12 @@
     }
 
     $query = mysqli_query($conn, "SELECT * FROM user WHERE Username='{$lietotajvards}' OR Email='{$epasts}'");
-    if (mysqli_num_rows($query) == 0){
-        $id = '';
+    if (mysqli_num_rows($query) == 0) {
         $parole = password_hash($parole, PASSWORD_DEFAULT);
         $admin = 0;
 
-        mysqli_query($conn, "INSERT INTO user VALUES (
-            '{$id}', '{$epasts}', '{$lietotajvards}', '{$parole}', '{$admin}'
+        mysqli_query($conn, "INSERT INTO user (`Email`, `Username`, `Password`, `Admin`) VALUES (
+            '$epasts', '$lietotajvards', '$parole', '$admin'
         )");
                                     
         $query = mysqli_query($conn, "SELECT * FROM user WHERE Username='{$lietotajvards}'");

@@ -2,10 +2,10 @@
 include "back-end/connect.php";
 
 //Books delete
-if (isset($_GET['del'])) {
-    $book_id = $_GET['del'];
+if (isset($_GET['delbook'])) {
+    $book_id = $_GET['delbook'];
 
-    $books_del = "DELETE FROM books WHERE BooksID = $book_id";
+    $books_del = "DELETE FROM book WHERE Book_ID = $book_id";
     //echo $books_del;
     mysqli_query($conn, $books_del) or die(mysqli_error($conn));
     header('Location: /Re-Books/admin.php');
@@ -16,25 +16,41 @@ if (isset($_POST['add-book'])) {
     $title = $_POST['Title'];
     $image = $_POST['Image'];
 
-    $books_add = "INSERT INTO `books` (`Title`, `Image`, `Rating`) VALUES ('$title', '$image', NULL)";
+    $books_add = "INSERT INTO `book` (`Title`, `Image`, `Rating`) VALUES ('$title', '$image', NULL)";
     mysqli_query($conn, $books_add) or die(mysqli_error($conn));
     header('Location: /Re-Books/admin.php');
 } 
 
 //Books update
 if (isset($_GET['edit-book'])) {
-    $book_id = $_GET['BooksID'];
+    $book_id = $_GET['Book_ID'];
     print_r($book_id);
-    $book = mysqli_query($conn, "SELECT * FROM `books` WHERE BooksID = '$book_id'");
+    $book = mysqli_query($conn, "SELECT * FROM `book` WHERE Book_ID = '$book_id'");
     $book = mysqli_fetch_assoc($book);
     print_r($book);
 }
 
 //Books output
-$books = "SELECT * FROM books";
+$books = "SELECT * FROM book";
 $books_result = mysqli_query($conn, $books) or die("Connection failed");
 
-for ($data = []; $row = mysqli_fetch_assoc($books_result); $data[] = $row);
+for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
+
+//Users output
+$users = "SELECT * FROM user";
+$users_result = mysqli_query($conn, $users) or die("Connection failed");
+
+for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
+
+//User delete
+if (isset($_GET['deluser'])) {
+    $user_id = $_GET['deluser'];
+
+    $users_del = "DELETE FROM user WHERE UserID = $user_id";
+    //echo $books_del;
+    mysqli_query($conn, $users_del) or die(mysqli_error($conn));
+    header('Location: /Re-Books/admin.php');
+}
 
 ?>
 
@@ -91,15 +107,15 @@ for ($data = []; $row = mysqli_fetch_assoc($books_result); $data[] = $row);
 
                     <div class="books-table scroll" id="books">
                         <div class="fav-book-container">
-                            <?php foreach ($data as $book) { ?>
+                            <?php foreach ($bookdata as $book) { ?>
                                 <div class="fav-book">
                                     <div>
-                                        <h2><?= $book['Title'] ?> <?= $book['BooksID'] ?></h2>
+                                        <h2><?= $book['Title'] ?> <?= $book['Book_ID'] ?></h2>
                                     </div>
                                     <div class="object-to-right">
                                         <button class="read-button" >Lasīt</button>
-                                        <a onclick="editBook()" href="update.php?BooksID=<?=$book['BooksID'];?>" class="edit-button" name="edit-book">Redigēt</a>
-                                        <a href="?del=<?=$book['BooksID'];?>">
+                                        <a onclick="editBook()" href="update.php?Book_ID=<?=$book['Book_ID'];?>" class="edit-button" name="edit-book">Redigēt</a>
+                                        <a href="?delbook=<?=$book['Book_ID'];?>">
                                             <button class="delete-button">Dzēst</button>
                                         </a>
                                     </div>
@@ -110,8 +126,17 @@ for ($data = []; $row = mysqli_fetch_assoc($books_result); $data[] = $row);
                     
                     <div class="books-table scroll" id="users" style="display:none;">
                         <div class="fav-book-container">
-                            <?php include 'username-admin.html';?>
-                            
+                            <?php foreach ($userdata as $user) { ?>
+                                <div class="fav-book">
+                                    <div>
+                                        <h2><?= $user['Username'] ?> <?= $user['UserID'] ?></h2>
+                                    </div>
+                                    <div class="object-to-right-users">
+                                        <button class="edit-button">Redigēt</button>
+                                        <a href="?deluser=<?=$user['UserID'];?>"><button class="delete-button">Dzēst</button></a>
+                                    </div>
+                                </div>
+                            <?php }?>
                         </div>
                     </div>
                     
@@ -123,7 +148,7 @@ for ($data = []; $row = mysqli_fetch_assoc($books_result); $data[] = $row);
                             <form action="updatebook.php" method="POST"> 
                                 <div class="popUpInputs">
                                     <p>Update</p>
-                                    <input type="text" name="BooksID" value="<?= $book['BooksID']; ?>">
+                                    <input type="text" name="BooksID" value="<?= $book['Book_ID']; ?>">
                                     <p>Nosaukums</p>
                                     <input type="text" class="Title" id="Title" name="Title" value="<?= $book['Title']; ?>">
                                     <p>Bilde</p>

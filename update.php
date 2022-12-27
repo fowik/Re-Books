@@ -1,9 +1,9 @@
 <?php
     include "back-end/connect.php";
 
-    $book_id = $_GET['BooksID'];
+    $book_id = $_GET['Book_ID'];
     print_r($book_id);
-    $book = mysqli_query($conn, "SELECT * FROM `books` WHERE BooksID = '$book_id'");
+    $book = mysqli_query($conn, "SELECT * FROM `book` WHERE Book_ID = '$book_id'");
     $book = mysqli_fetch_assoc($book);
     print_r($book);
 
@@ -21,7 +21,7 @@
         <form action="updatebook.php" method="POST"> 
             <div class="popUpInputs">
                     <p>Update</p>
-                    <input type="text" name="BooksID" value="<?=$book['BooksID'];?>">
+                    <input type="text" name="BooksID" value="<?=$book['Book_ID'];?>">
                     <p>Nosaukums</p>
                     <input type="text" class="Title" id="Title" name="Title" value="<?=$book['Title'];?>">
                     <p>Bilde</p>
