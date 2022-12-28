@@ -53,7 +53,7 @@
                                 <div class="swiper-slide">
                                     <div class="book-cover mySwiper">
                                         <span class="link">
-                                            <a href="book-page.php">
+                                            <a href="book-page.php?bookID=<?=$book['bookID'];?>">
                                                 <div class="book-img slide">
                                                     <img src="<?= $book['image']?>" alt="" width="170px" height="220px">
                                                 </div>

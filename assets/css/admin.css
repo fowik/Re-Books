@@ -62,7 +62,7 @@ h1 span {
     margin-right: auto;
 }
 
-.search-bar input[type=text] {
+.search-bar input {
     padding: 6px;
     border: none;
     font-size: 17px;
@@ -262,53 +262,38 @@ h1 span {
     background-color: #830202;
 }
 .popUpInputs {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    top: 30px
+    top: 30px;
+    margin: 0 0 0 10px
+    
 }
-.popUpWrapper {
-    width: 500px;
-    height: 400px;
-    background-color: #6f7b91;
-    margin: auto;
-    margin-top: 12.5%;
-    text-decoration: none;
-}
-
-input.Title {
-    position: relative;
-    text-align: center;
-    margin-left: 33%;
-    margin-right: 33%;
-    width: 30%;
+.popUpInputs input {
+    margin: 10px 0 5px;
     padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background: #f1f1f1;
-}
-
-input.Title:focus {
-    background-color: #ddd;
+    width: 400px;
     outline: none;
 }
 
-.Image {
-    position: relative;
-    text-align: center;
-    margin-top: 2%;
-    margin-left: 21.5%;
-    margin-right: 21.5%;
-    padding: 15px;
-    border: none;
+.popUpWrapper {
+    display: block;
+    width: 500px;
+    height: 600px;
+    background-color: #6f7b91;
+    margin: 0 auto auto;
+    text-decoration: none;
 }
 
 .add-book {
-    margin-top: 150px;
-    margin-left: 20px;
+    margin: 20px 0;
     background-color: #04AA6D;
     color: white;
     padding: 8px 16px;
+    width: 160px;
     border: none;
     cursor: pointer;
+
 }
 
 .add-book:hover {

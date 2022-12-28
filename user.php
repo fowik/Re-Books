@@ -4,6 +4,16 @@
     if (!$_SESSION['user']) {
         header('Location: index.php');
     }
+
+    if (isset($_SESSION['user'])) {
+        $admin = $_SESSION['user']['admin'];
+        //print_r($admin);
+
+        if ($admin <> 0)
+        {
+            header('Location: ./admin.php');
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +53,7 @@
                             <input type="text" placeholder="Meklēt...">
                             <button>Meklēt</button>
                         </div>
-                        <h2><?= $_SESSION['user']['username']?></h2>
+                        <!-- <h2><?= $_SESSION['user']['username']?></h2> -->
                         <a class="leave-button" href="vendor/sign/logout.php">Iziet</a>
                     </div>
 

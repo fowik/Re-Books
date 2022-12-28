@@ -2,6 +2,17 @@
     session_start();
     require_once "vendor/connect.php";
 
+
+    if (isset($_SESSION['user'])) {
+        $admin = $_SESSION['user']['admin'];
+        //print_r($admin);
+        
+        if ($admin <> 1)
+        {
+            header('Location: ./user.php');
+        }
+    }
+
     //Books delete
     if (isset($_GET['delbook'])) {
         $book_id = $_GET['delbook'];
@@ -15,13 +26,16 @@
     //Books add
     if (isset($_POST['add-book'])) {
         $title = $_POST['title'];
+        $author = $_POST['author'];
+        $description = $_POST['description'];
         $image = $_FILES['image'];
-        //$rating = $_POST['rating'];
-
+        $category = $_POST['category'];
+        $date = $_POST['date'];
+        
         $path = 'uploads/' . time() . $_FILES['image']['name'];
         move_uploaded_file($_FILES['image']['tmp_name'], './' . $path);
 
-        $books_add = "INSERT INTO `books` (`title`, `image`) VALUES ('$title', '$path')";//, '$rating', `rating`
+        $books_add = "INSERT INTO `books` (`title`, `author`, `description`, `image`, `category`, `date`) VALUES ('$title', '$author', '$description', '$path', '$category', '$date')";
         mysqli_query($conn, $books_add) or die(mysqli_error($conn));
         header('Location: ./admin.php');
     } 
@@ -106,7 +120,7 @@
                             <button>Meklēt</button>
                         </div>
 
-                        <button class="leave-button">Iziet</button>
+                        <a href="vendor/sign/logout.php" class="leave-button">Iziet</a>
                     </div>
 
                     <div class="books-table scroll" id="books">
@@ -169,8 +183,19 @@
                         <form class="add-menu popUpWrapper" method="POST" enctype="multipart/form-data">
                             <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a>
                             <div class="popUpInputs">
-                                <input type="text" class="Title" id="Title" name="title" placeholder="Nosaukums">
-                                <input type="file" class="Image" id="Image" name="image" placeholder="Image">
+                                <label>Nosaukums</label>
+                                <input type="text"  name="title" placeholder="Nosaukums">
+                                <label>Autors</label>
+                                <input type="text"  name="author" placeholder="Autors">
+                                <label>Apraksts</label>
+                                <input type="text"  name="description" placeholder="Apraksts">
+                                <label>Bilde</label>
+                                <input type="file"  name="image" placeholder="Image">
+                                <label>Kategorija</label>
+                                <input type="text"  name="category" placeholder="Kategorija">
+                                <label>Datums</label>
+                                <input type="date"  name="date" placeholder="Datums">
+                                
                                 <button type="sumbit" class="add-book" name="add-book">Pievienot grāmatu</button>
                             </div>
                         </form>      

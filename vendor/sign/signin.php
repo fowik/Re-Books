@@ -12,8 +12,8 @@
         $_SESSION['user'] = [
             "userID" => $user['userID'],
             "username" => $user['username'],
-            "avatar" => $user['avatar'],
-            "email" => $user['email']
+            "email" => $user['email'],
+            "admin" => $user['admin']
         ];
 
         header('Location: ../../user.php');
