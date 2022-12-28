@@ -1,21 +1,27 @@
-<?php
-//session_start();
-//<?= $_SESSION['Username'] ?>
-
 <nav class="nav-bar-wrapper">
     <div class="nav-bar">
         <ul>
             <h2 class="logo"><a href="index.php">Re-<span>Books</span></a></h2>
             <!-- <li class="log-reg-panel"><a href="#">Ienākt</a></li> -->
-            <li class="log-reg-panel"><a href="LogInPage.php">Reģistrēties</a></li>
+            <li class="log-reg-panel">
+				
+					<?php
+						if (isset($_SESSION['user'])) {
+							echo '<a href="register.php">' . $_SESSION['user']['username'] . '</a>';
+						} else{ 
+							echo '<a href="register.php">Reģistrēties</a>';
+						}
+					?>
+				</a>
+			</li>
         </ul>
     </div>
 </nav>
 <?php
 //Include required PHPMailer files
-	require 'back-end/PHPMailer.php';
-	require 'back-end/SMTP.php';
-	require 'back-end/Exception.php';
+	require 'vendor/PHPMailer/PHPMailer.php';
+	require 'vendor/PHPMailer/SMTP.php';
+	require 'vendor/PHPMailer/Exception.php';
 //Define name spaces
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;

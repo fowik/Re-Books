@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/nav-bar.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/book-page.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/nav-bar.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/book-page.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
@@ -16,14 +14,18 @@
 
 <body>
 
-    <?php include 'views/Nav-Bar.php';?>
+    <?php include 'assets/views/nav-bar.php';?>
 
     <div class="wrapper">
 
         <div class="main">
             <div class="book-view">
 
-                <?php include 'book-for-page.html';?>
+            <div class="book-cover">
+                <div class="book-img">
+                    <img src="./images/Outdoors-man-portrait_(cropped).jpg" alt="" width="250" height="300px">
+                </div>
+            </div>
                     <div class="book-content">
                     <h1>History of Rēbuks</h1>
                     <h2>Autors: Gundars Rēbuks</h2>
@@ -48,7 +50,7 @@
             </div>
         </div>
 
-        <?php include 'views/footer.html';?>
+        <?php include 'assets/views/footer.html';?>
 
     </div>
     

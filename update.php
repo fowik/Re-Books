@@ -1,9 +1,9 @@
 <?php
-    include "back-end/connect.php";
+    include "vendor/connect.php";
 
-    $book_id = $_GET['Book_ID'];
+    $book_id = $_GET['bookID'];
     print_r($book_id);
-    $book = mysqli_query($conn, "SELECT * FROM `book` WHERE Book_ID = '$book_id'");
+    $book = mysqli_query($conn, "SELECT * FROM `books` WHERE Book_ID = '$book_id'");
     $book = mysqli_fetch_assoc($book);
     //print_r($book);
 

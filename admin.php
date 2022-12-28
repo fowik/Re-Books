@@ -1,56 +1,62 @@
 <?php
-include "back-end/connect.php";
+    session_start();
+    require_once "vendor/connect.php";
 
-//Books delete
-if (isset($_GET['delbook'])) {
-    $book_id = $_GET['delbook'];
+    //Books delete
+    if (isset($_GET['delbook'])) {
+        $book_id = $_GET['delbook'];
 
-    $books_del = "DELETE FROM book WHERE Book_ID = $book_id";
-    //echo $books_del;
-    mysqli_query($conn, $books_del) or die(mysqli_error($conn));
-    header('Location: /Re-Books/admin.php');
-}
+        $books_del = "DELETE FROM `books` WHERE `bookID` = $book_id";
+        //echo $books_del;
+        mysqli_query($conn, $books_del) or die(mysqli_error($conn));
+        header('Location: ./admin.php');
+    }
 
-//Books insert
-if (isset($_POST['add-book'])) {
-    $title = $_POST['Title'];
-    $image = $_POST['Image'];
+    //Books add
+    if (isset($_POST['add-book'])) {
+        $title = $_POST['title'];
+        $image = $_FILES['image'];
+        //$rating = $_POST['rating'];
 
-    $books_add = "INSERT INTO `book` (`Title`, `Image`, `Rating`) VALUES ('$title', '$image', NULL)";
-    mysqli_query($conn, $books_add) or die(mysqli_error($conn));
-    header('Location: /Re-Books/admin.php');
-} 
+        $path = 'uploads/' . time() . $_FILES['image']['name'];
+        move_uploaded_file($_FILES['image']['tmp_name'], './' . $path);
 
-//Books update
-if (isset($_GET['edit-book'])) {
-    $book_id = $_GET['Book_ID'];
-    print_r($book_id);
-    $book = mysqli_query($conn, "SELECT * FROM `book` WHERE Book_ID = '$book_id'");
-    $book = mysqli_fetch_assoc($book);
-    print_r($book);
-}
+        $books_add = "INSERT INTO `books` (`title`, `image`) VALUES ('$title', '$path')";//, '$rating', `rating`
+        mysqli_query($conn, $books_add) or die(mysqli_error($conn));
+        header('Location: ./admin.php');
+    } 
 
-//Books output
-$books = "SELECT * FROM book";
-$books_result = mysqli_query($conn, $books) or die("Connection failed");
+    //Books update
+    if (isset($_GET['edit-book'])) {
+        $book_id = $_GET['bookID'];
+        print_r($book_id);
+        $book = mysqli_query($conn, "SELECT * FROM `books` WHERE `bookID` = '$book_id'");
+        $book = mysqli_fetch_assoc($book);
+        print_r($book);
+    }
 
-for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
+    //Books output
+    $books = "SELECT * FROM `books`";
+    $books_result = mysqli_query($conn, $books) or die("Connection failed");
 
-//Users output
-$users = "SELECT * FROM user";
-$users_result = mysqli_query($conn, $users) or die("Connection failed");
+    for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
 
-for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
+    //Users output
+    $users = "SELECT * FROM `users`";
+    $users_result = mysqli_query($conn, $users) or die("Connection failed");
 
-//User delete
-if (isset($_GET['deluser'])) {
-    $user_id = $_GET['deluser'];
+    for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
 
-    $users_del = "DELETE FROM user WHERE UserID = $user_id";
-    //echo $books_del;
-    mysqli_query($conn, $users_del) or die(mysqli_error($conn));
-    header('Location: /Re-Books/admin.php');
-}
+    //User delete
+    if (isset($_GET['deluser'])) {
+        $user_id = $_GET['deluser'];
+
+        $users_del = "DELETE FROM `users` WHERE userID = $user_id";
+        //echo $books_del;
+        mysqli_query($conn, $users_del) or die(mysqli_error($conn));
+        
+        header('Location: ./admin.php');
+    }
 
 ?>
 
@@ -59,12 +65,10 @@ if (isset($_GET['deluser'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/nav-bar.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/nav-bar.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/admin.css">
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <title>Admin panel</title>
 </head>
@@ -72,7 +76,7 @@ if (isset($_GET['deluser'])) {
 
     <div class="wrapper">
 
-        <?php include 'views/nav-bar.php';?>
+        <?php include 'assets/views/nav-bar.php';?>
 
         <div class="main">
             <div>
@@ -110,12 +114,12 @@ if (isset($_GET['deluser'])) {
                             <?php foreach ($bookdata as $book) { ?>
                                 <div class="fav-book">
                                     <div>
-                                        <h2><?= $book['Title'] ?> <?= $book['Book_ID'] ?></h2>
+                                        <h2><?= $book['title'] ?> <?= $book['bookID'] ?></h2>
                                     </div>
                                     <div class="object-to-right">
                                         <button class="read-button" >Lasīt</button>
-                                        <a onclick="editBook()" href="update.php?Book_ID=<?=$book['Book_ID'];?>" class="edit-button" name="edit-book">Redigēt</a>
-                                        <a href="?delbook=<?=$book['Book_ID'];?>">
+                                        <a onclick="editBook()" href="update.php?bookID=<?=$book['bookID'];?>" class="edit-button" name="edit-book">Redigēt</a>
+                                        <a href="?delbook=<?=$book['bookID'];?>">
                                             <button class="delete-button">Dzēst</button>
                                         </a>
                                     </div>
@@ -129,11 +133,11 @@ if (isset($_GET['deluser'])) {
                             <?php foreach ($userdata as $user) { ?>
                                 <div class="fav-book">
                                     <div>
-                                        <h2><?= $user['Username'] ?> <?= $user['UserID'] ?></h2>
+                                        <h2><?= $user['username'] ?> <?= $user['userID'] ?></h2>
                                     </div>
                                     <div class="object-to-right-users">
                                         <button class="edit-button">Redigēt</button>
-                                        <a href="?deluser=<?=$user['UserID'];?>"><button class="delete-button">Dzēst</button></a>
+                                        <a href="?deluser=<?=$user['userID'];?>"><button class="delete-button">Dzēst</button></a>
                                     </div>
                                 </div>
                             <?php }?>
@@ -145,16 +149,16 @@ if (isset($_GET['deluser'])) {
                     <div class="editPopup" id="editPopup" style="display:none;">
                         <div class="add-menu popUpWrapper">
                         <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a>
-                            <form action="updatebook.php" method="POST"> 
+                            <form action="updatebook.php" method="POST" enctype="multipart/form-data"> 
                                 <div class="popUpInputs">
                                     <p>Update</p>
-                                    <input type="text" name="BooksID" value="<?= $book['Book_ID']; ?>">
+                                    <input type="text" name="BooksID" value="<?= $book['bookID']; ?>">
                                     <p>Nosaukums</p>
-                                    <input type="text" class="Title" id="Title" name="Title" value="<?= $book['Title']; ?>">
+                                    <input type="text" class="Title" id="Title" name="Title" value="<?= $book['title']; ?>">
                                     <p>Bilde</p>
-                                    <input type="file" class="Image" id="Image" name="Image" value="<?= $book['Image']; ?>">
+                                    <input type="file" class="Image" id="Image" name="Image" value="<?= $book['image']; ?>">
                                     <p>Rating</p>
-                                    <input type="number" class="Title" id="Title" name="Rating" value="<?= $book['Rating']; ?>">
+                                    <input type="number" class="Title" id="Title" name="Rating" value="<?= $book['rating']; ?>">
                                     <button class="update-book" name="update-book">Atjaunot grāmatu</button>
                                 </div>
                             </form>   
@@ -162,12 +166,12 @@ if (isset($_GET['deluser'])) {
                     </div>
 
                     <div class="addPopup" id="addPopup" style="display:none;">
-                        <form class="add-menu popUpWrapper" method="POST">
+                        <form class="add-menu popUpWrapper" method="POST" enctype="multipart/form-data">
                             <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a>
                             <div class="popUpInputs">
-                                <input type="text" class="Title" id="Title" name="Title" placeholder="Nosaukums">
-                                <input type="file" class="Image" id="Image" name="Image" placeholder="Image">
-                                <button class="add-book" name="add-book">Pievienot grāmatu</button>
+                                <input type="text" class="Title" id="Title" name="title" placeholder="Nosaukums">
+                                <input type="file" class="Image" id="Image" name="image" placeholder="Image">
+                                <button type="sumbit" class="add-book" name="add-book">Pievienot grāmatu</button>
                             </div>
                         </form>      
                     </div>
@@ -175,12 +179,10 @@ if (isset($_GET['deluser'])) {
             </div>
         </div>
 
-        <?php include 'views/footer.html';?>
+        <?php include 'assets/views/footer.html';?>
 
     </div>
 
-    
-
-    <script src="jquery.js"></script>
+    <script src="./assets/js/jquery.js"></script>
 </body>
 </html>
