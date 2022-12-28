@@ -1,8 +1,6 @@
 <?php
     require_once("connect.php");
 
-    session_start();
-
     $_SESSION["change"] = 
             'document.getElementById("registracija").style.display="none"; 
             document.getElementById("pieslegties").style.display="block";';

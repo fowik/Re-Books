@@ -1,3 +1,7 @@
+<?php
+//session_start();
+//<?= $_SESSION['Username'] ?>
+
 <nav class="nav-bar-wrapper">
     <div class="nav-bar">
         <ul>

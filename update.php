@@ -5,7 +5,7 @@
     print_r($book_id);
     $book = mysqli_query($conn, "SELECT * FROM `book` WHERE Book_ID = '$book_id'");
     $book = mysqli_fetch_assoc($book);
-    print_r($book);
+    //print_r($book);
 
 ?>
 
@@ -21,7 +21,7 @@
         <form action="updatebook.php" method="POST"> 
             <div class="popUpInputs">
                     <p>Update</p>
-                    <input type="text" name="BooksID" value="<?=$book['Book_ID'];?>">
+                    <input type="text" name="Book_ID" value="<?=$book['Book_ID'];?>">
                     <p>Nosaukums</p>
                     <input type="text" class="Title" id="Title" name="Title" value="<?=$book['Title'];?>">
                     <p>Bilde</p>

@@ -38,7 +38,7 @@
                             <button>Meklēt</button>
                         </div>
 
-                        <button class="leave-button">Iziet</button>
+                        <a href="../back-end/logout.php"><button class="leave-button">Iziet</button></a>
                     </div>
 
                     <div class="books-table scroll">
