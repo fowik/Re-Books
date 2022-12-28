@@ -30,18 +30,12 @@ CREATE TABLE IF NOT EXISTS `books` (
   `date` date DEFAULT NULL,
   `rating` int DEFAULT NULL,
   PRIMARY KEY (`bookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.books: ~8 rows (приблизительно)
+-- Дамп данных таблицы re-books.books: ~7 rows (приблизительно)
 INSERT INTO `books` (`bookID`, `title`, `author`, `description`, `image`, `category`, `date`, `rating`) VALUES
-	(2, 'asdad', 'asdad', 'adawdawdasuidhauisdhauiowdhnioawdhuioawdhjioadhnoadhoasdhjoaisdhjioadjioasjdioasdjiad', NULL, 'Drama', NULL, 2),
-	(3, 'asdad', NULL, NULL, '', NULL, NULL, NULL),
-	(6, 'awdawdawdawda', NULL, NULL, '', NULL, NULL, NULL),
-	(7, 'awdawdawdad', NULL, NULL, '', NULL, NULL, NULL),
-	(8, 'awdawdawd', NULL, NULL, '', NULL, NULL, NULL),
-	(9, 'asdasdadad', NULL, NULL, '', NULL, NULL, NULL),
-	(10, '', NULL, NULL, 'elektroniskais čeks.png', NULL, NULL, NULL),
-	(11, 'awdawd', NULL, NULL, 'uploads/1672251049elektroniskais čeks.png', NULL, NULL, NULL);
+	(14, 'awdawdawd', 'awdawdawd', 'awdawdawdawdadad', 'uploads/1672260469elektroniskais čeks.png', 'awdawdawd', '2022-12-28', NULL),
+	(15, 'NIGGERS', 'NIGGER RIMSA', 'adkoahwdioawhjdoahwdioahjidoahjwdokjwiohdaiosdhoadhoawdhaiowdhaowdhaidhwaiodhoaid', 'uploads/1672263919image 2.png', 'Drama', '2022-12-28', NULL);
 
 -- Дамп структуры для таблица re-books.favourites
 CREATE TABLE IF NOT EXISTS `favourites` (
@@ -65,12 +59,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.users: ~2 rows (приблизительно)
+-- Дамп данных таблицы re-books.users: ~4 rows (приблизительно)
 INSERT INTO `users` (`userID`, `email`, `username`, `password`, `admin`) VALUES
-	(2, 'ilarimsa937@gmail.com', 'fowik', '202cb962ac59075b964b07152d234b70', 0),
-	(7, 'ilarimsa937@gmail.com', 'zerlog', '202cb962ac59075b964b07152d234b70', 0);
+	(13, 'ilarimsa937@gmail.com', 'fowik', '202cb962ac59075b964b07152d234b70', 1),
+	(14, 'cheaterrrrr123@gmail.com', 'zerlog', '202cb962ac59075b964b07152d234b70', 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
