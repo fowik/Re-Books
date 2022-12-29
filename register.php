@@ -116,6 +116,12 @@
                   <hr>
               
                   <button type="submit" class="mainit_poga">Mainīt</button>
+                  <?php 
+                    if (isset($_SESSION['message'])) {
+                      echo '<p class="msg"> ' . $_SESSION['message'] .'</p>';
+                    }
+                    unset($_SESSION['message']);
+                  ?>
                 </div>
             </form>
             

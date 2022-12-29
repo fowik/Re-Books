@@ -19,6 +19,6 @@
         header('Location: ../../user.php');
     } else {
         $_SESSION['message'] = 'Invalid login or password';
-        header('Location: ../index.php');
+        header('Location: ../../register.php');
     }
 ?>
