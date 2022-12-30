@@ -2,6 +2,15 @@
     session_start();
     require_once "vendor/connect.php";
 
+    if (!$_SESSION['user']) {
+        $admin = $_SESSION['user']['admin'];
+        //print_r($admin);
+        
+        if ($admin <> 1)
+        {
+            header('Location: ./index.php');
+        }
+    }
 
     if (isset($_SESSION['user'])) {
         $admin = $_SESSION['user']['admin'];
@@ -131,7 +140,7 @@
                                         <h2><?= $book['title'] ?> <?= $book['bookID'] ?></h2>
                                     </div>
                                     <div class="object-to-right">
-                                        <button class="read-button" >Lasīt</button>
+                                        <a href="book-page.php?bookID=<?=$book['bookID'];?>"><button class="read-button" >Lasīt</button></a>
                                         <a onclick="editBook()" href="update.php?bookID=<?=$book['bookID'];?>" class="edit-button" name="edit-book">Redigēt</a>
                                         <a href="?delbook=<?=$book['bookID'];?>">
                                             <button class="delete-button">Dzēst</button>

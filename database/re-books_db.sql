@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `books` (
   PRIMARY KEY (`bookID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.books: ~7 rows (приблизительно)
+-- Дамп данных таблицы re-books.books: ~2 rows (приблизительно)
 INSERT INTO `books` (`bookID`, `title`, `author`, `description`, `image`, `category`, `date`, `rating`) VALUES
 	(14, 'awdawdawd', 'awdawdawd', 'awdawdawdawdadad', 'uploads/1672260469elektroniskais čeks.png', 'awdawdawd', '2022-12-28', NULL),
 	(15, 'NIGGERS', 'NIGGER RIMSA', 'adkoahwdioawhjdoahwdioahjidoahjwdokjwiohdaiosdhoadhoawdhaiowdhaowdhaidhwaiodhoaid', 'uploads/1672263919image 2.png', 'Drama', '2022-12-28', NULL);
@@ -47,9 +47,12 @@ CREATE TABLE IF NOT EXISTS `favourites` (
   KEY `books_ID` (`FK_booksID`) USING BTREE,
   CONSTRAINT `FK_favourites_books` FOREIGN KEY (`FK_booksID`) REFERENCES `books` (`bookID`),
   CONSTRAINT `FK_favourites_users` FOREIGN KEY (`FK_userID`) REFERENCES `users` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.favourites: ~0 rows (приблизительно)
+-- Дамп данных таблицы re-books.favourites: ~2 rows (приблизительно)
+INSERT INTO `favourites` (`favouritesID`, `FK_booksID`, `FK_userID`) VALUES
+	(10, 14, 14),
+	(15, 15, 14);
 
 -- Дамп структуры для таблица re-books.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -61,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.users: ~4 rows (приблизительно)
+-- Дамп данных таблицы re-books.users: ~2 rows (приблизительно)
 INSERT INTO `users` (`userID`, `email`, `username`, `password`, `admin`) VALUES
 	(13, 'ilarimsa937@gmail.com', 'fowik', '202cb962ac59075b964b07152d234b70', 1),
 	(14, 'cheaterrrrr123@gmail.com', 'zerlog', '202cb962ac59075b964b07152d234b70', 0);

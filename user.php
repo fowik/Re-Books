@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once "vendor/connect.php";
 
     if (!$_SESSION['user']) {
         header('Location: index.php');
@@ -13,6 +14,32 @@
         {
             header('Location: ./admin.php');
         }
+    }
+
+    //favourite books output
+    $user_id = $_SESSION['user']['userID'];
+    $favoruites = 
+    "SELECT * 
+    FROM `favourites` 
+    INNER JOIN `books` 
+        ON `favourites`.`FK_booksID` = `books`.`bookID` 
+    INNER JOIN `users` 
+        ON `favourites`.`FK_userID` = `users`.`userID`
+    WHERE `FK_userID` = '$user_id'";
+    
+    //echo $favoruites;
+    $favoruites_result = mysqli_query($conn, $favoruites) or die("Connection failed");
+    
+    for ($favoruitedata = []; $row = mysqli_fetch_assoc($favoruites_result); $favoruitedata[] = $row);
+
+    //book delete from favourites
+    if (isset($_GET['delfav'])) {
+        $favourite_id = $_GET['delfav'];
+
+        $books_del = "DELETE FROM `favourites` WHERE `favouritesID` = $favourite_id";
+        //echo $books_del;
+        mysqli_query($conn, $books_del) or die(mysqli_error($conn));
+        header('Location: ./admin.php');
     }
 ?>
 
@@ -60,10 +87,18 @@
                     <div class="books-table scroll">
 
                         <div class="fav-book-container">
-                            <include src="fav-book.html"></include>
-
+                            <?php foreach ($favoruitedata as $favoruite) { ?>
+                                <div class="fav-book">
+                                    <div>
+                                        <h2><?= $favoruite['title'] ?></h2>
+                                    </div>
+                                    <div class="object-to-right">
+                                        <a href="book-page.php?bookID=<?= $favoruite['bookID']; ?>" class="read-button">Lasīt</a> 
+                                        <a href="?delfav=<?=$favoruite['favouritesID'];?>"><button class="delete-button">Dzēst</button></a>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
-
                     </div>
                 </div>
                     

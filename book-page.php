@@ -49,7 +49,7 @@
                     </h2>
 
                     <div class="button-read">
-                        <a href="">Lasīt</a>
+                        <a href="">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievieont</a>
                     </div>
                 </div>
             </div>
