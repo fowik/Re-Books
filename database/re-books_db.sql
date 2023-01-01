@@ -30,12 +30,16 @@ CREATE TABLE IF NOT EXISTS `books` (
   `date` date DEFAULT NULL,
   `rating` int DEFAULT NULL,
   PRIMARY KEY (`bookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.books: ~2 rows (приблизительно)
+-- Дамп данных таблицы re-books.books: ~6 rows (приблизительно)
 INSERT INTO `books` (`bookID`, `title`, `author`, `description`, `image`, `category`, `date`, `rating`) VALUES
 	(14, 'awdawdawd', 'awdawdawd', 'awdawdawdawdadad', 'uploads/1672260469elektroniskais čeks.png', 'awdawdawd', '2022-12-28', NULL),
-	(15, 'NIGGERS', 'NIGGER RIMSA', 'adkoahwdioawhjdoahwdioahjidoahjwdokjwiohdaiosdhoadhoawdhaiowdhaowdhaidhwaiodhoaid', 'uploads/1672263919image 2.png', 'Drama', '2022-12-28', NULL);
+	(15, 'NIGGERS', 'NIGGER RIMSA', 'adkoahwdioawhjdoahwdioahjidoahjwdokjwiohdaiosdhoadhoawdhaiowdhaowdhaidhwaiodhoaid', 'uploads/1672263919image 2.png', 'Drama', '2022-12-28', NULL),
+	(16, 'awdawddawda', 'wdawdadad', 'dddddd', 'uploads/1672603285', 'awdadawdadawda', '2023-01-22', NULL),
+	(17, 'wdadada', 'dadadad', 'awdawdadaw', 'uploads/1672603300step-3-15.png', 'awdddd', '2023-01-01', NULL),
+	(18, 'adadadadadadad', 'dadad', 'dadadadadadadadadadadadadadadawdawdadwadad', 'uploads/1672603320', 'Drama', '2023-02-02', NULL),
+	(19, 'dadadawda', 'wdadada', 'dawdadadadad', 'uploads/1672603337Обложка_книги_Александра_Ворошилова_Первая_победа.jpg', 'Drama', '2023-01-15', NULL);
 
 -- Дамп структуры для таблица re-books.favourites
 CREATE TABLE IF NOT EXISTS `favourites` (
@@ -47,12 +51,20 @@ CREATE TABLE IF NOT EXISTS `favourites` (
   KEY `books_ID` (`FK_booksID`) USING BTREE,
   CONSTRAINT `FK_favourites_books` FOREIGN KEY (`FK_booksID`) REFERENCES `books` (`bookID`),
   CONSTRAINT `FK_favourites_users` FOREIGN KEY (`FK_userID`) REFERENCES `users` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.favourites: ~2 rows (приблизительно)
+-- Дамп данных таблицы re-books.favourites: ~3 rows (приблизительно)
 INSERT INTO `favourites` (`favouritesID`, `FK_booksID`, `FK_userID`) VALUES
 	(10, 14, 14),
-	(15, 15, 14);
+	(27, 16, 14),
+	(28, 15, 14),
+	(29, 14, 13),
+	(30, 14, 13),
+	(31, 14, 13),
+	(32, 14, 13),
+	(33, 14, 13),
+	(34, 14, 13),
+	(35, 19, 13);
 
 -- Дамп структуры для таблица re-books.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -62,9 +74,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.users: ~2 rows (приблизительно)
+-- Дамп данных таблицы re-books.users: ~4 rows (приблизительно)
 INSERT INTO `users` (`userID`, `email`, `username`, `password`, `admin`) VALUES
 	(13, 'ilarimsa937@gmail.com', 'fowik', '202cb962ac59075b964b07152d234b70', 1),
 	(14, 'cheaterrrrr123@gmail.com', 'zerlog', '202cb962ac59075b964b07152d234b70', 0);
