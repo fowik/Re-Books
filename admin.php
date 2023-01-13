@@ -49,14 +49,14 @@
         header('Location: ./admin.php');
     } 
 
-    //Books update
-    if (isset($_GET['edit-book'])) {
-        $book_id = $_GET['bookID'];
-        print_r($book_id);
-        $book = mysqli_query($conn, "SELECT * FROM `books` WHERE `bookID` = '$book_id'");
-        $book = mysqli_fetch_assoc($book);
-        print_r($book);
-    }
+    // //Books update
+    // if (isset($_GET['edit-book'])) {
+    //     $book_id = $_GET['bookID'];
+    //     print_r($book_id);
+    //     $book = mysqli_query($conn, "SELECT * FROM `books` WHERE `bookID` = '$book_id'");
+    //     $book = mysqli_fetch_assoc($book);
+    //     print_r($book);
+    // }
 
     //Books output
     $books = "SELECT * FROM `books`";
@@ -141,7 +141,7 @@
                                     </div>
                                     <div class="object-to-right">
                                         <a href="book-page.php?bookID=<?=$book['bookID'];?>"><button class="read-button" >Lasīt</button></a>
-                                        <a onclick="editBook()" href="update.php?bookID=<?=$book['bookID'];?>" class="edit-button" name="edit-book">Redigēt</a>
+                                        <a href="update.php?bookID=<?=$book['bookID'];?>" class="edit-button" name="edit-book">Redigēt</a>
                                         <a href="?delbook=<?=$book['bookID'];?>">
                                             <button class="delete-button">Dzēst</button>
                                         </a>
@@ -169,7 +169,7 @@
                     
                     <button class="add-button" id="add-button" onclick="addBook()">Pievienot</button>
                     
-                    <div class="editPopup" id="editPopup" style="display:none;">
+                    <!-- <div class="editPopup" id="editPopup" style="display:none;">
                         <div class="add-menu popUpWrapper">
                         <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a>
                             <form action="updatebook.php" method="POST" enctype="multipart/form-data"> 
@@ -179,14 +179,14 @@
                                     <p>Nosaukums</p>
                                     <input type="text" class="Title" id="Title" name="Title" value="<?= $book['title']; ?>">
                                     <p>Bilde</p>
-                                    <input type="file" class="Image" id="Image" name="Image" value="<?= $book['image']; ?>">
+                                    <input type="file" class="Image" id="Image" name="image" value="<?= $book['image']; ?>">
                                     <p>Rating</p>
                                     <input type="number" class="Title" id="Title" name="Rating" value="<?= $book['rating']; ?>">
                                     <button class="update-book" name="update-book">Atjaunot grāmatu</button>
                                 </div>
                             </form>   
                         </div>  
-                    </div>
+                    </div> -->
 
                     <div class="addPopup" id="addPopup" style="display:none;">
                         <form class="add-menu popUpWrapper" method="POST" enctype="multipart/form-data">
