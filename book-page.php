@@ -2,6 +2,7 @@
     session_start();
     require_once "vendor/connect.php";
 
+    //Exact book output
     $book_id = $_GET['bookID'];
     $book = "SELECT * FROM `books` WHERE `bookID` = '$book_id'";
     $book_result = mysqli_query($conn, $book) or die("Connection failed");

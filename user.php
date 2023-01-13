@@ -2,10 +2,12 @@
     session_start();
     require_once "vendor/connect.php";
 
+    //Session check
     if (!$_SESSION['user']) {
         header('Location: index.php');
     }
 
+    //User check
     if (isset($_SESSION['user'])) {
         $admin = $_SESSION['user']['admin'];
         //print_r($admin);

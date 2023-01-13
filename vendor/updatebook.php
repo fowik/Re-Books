@@ -1,6 +1,7 @@
 <?php
 include "connect.php";
 
+//Book update
 $book_id = $_POST['Book_ID'];
 $title = $_POST['Title'];
 $author = $_POST['Author'];

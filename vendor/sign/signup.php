@@ -13,6 +13,7 @@
     $password_confirm = $_POST['password_confirm'];
     $admin = 0;
 
+    //Input check
     if ($email == "" && $email_confirm == "" && $username == "" && $passowrd == "" && $password_confirm == ""){
         $_SESSION['message'] = 'Jūs atstājāt tukšu lauku';
         header("Location: ../../register.php");
@@ -20,6 +21,7 @@
     }
 
     $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username' OR email='$email'");
+    //User exist
     if (mysqli_num_rows($query) == 0) {
         $password = md5($password);
 

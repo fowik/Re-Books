@@ -2,6 +2,7 @@
     session_start();
     require_once "vendor/connect.php";
 
+    //Session check
     if (!$_SESSION['user']) {
         $admin = $_SESSION['user']['admin'];
         //print_r($admin);
@@ -12,6 +13,7 @@
         }
     }
 
+    //Admin check
     if (isset($_SESSION['user'])) {
         $admin = $_SESSION['user']['admin'];
         //print_r($admin);
