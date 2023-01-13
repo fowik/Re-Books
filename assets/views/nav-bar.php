@@ -26,7 +26,7 @@
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
-
+	
 	if (array_key_exists('email', $_POST)) {
 		
 		$email = "";

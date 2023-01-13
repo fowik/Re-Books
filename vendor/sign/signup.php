@@ -14,7 +14,7 @@
     $admin = 0;
 
     //Input check
-    if ($email == "" && $email_confirm == "" && $username == "" && $passowrd == "" && $password_confirm == ""){
+    if ($email == "" && $email_confirm == "" && $username == "" && $password == "" && $password_confirm == ""){
         $_SESSION['message'] = 'Jūs atstājāt tukšu lauku';
         header("Location: ../../register.php");
         exit();
