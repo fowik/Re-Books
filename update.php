@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/nav-bar.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/update.css">
+    <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Udpate book</title>
 </head>
@@ -24,7 +26,7 @@
         <!-- <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a> -->
         <form action="vendor/updatebook.php" method="POST"  enctype="multipart/form-data"> 
             <div class="popUpInputs">
-                <p>Update</p>
+                <h1>Atjaunot</h1>
                 <input type="hidden" name="Book_ID" value="<?=$book['bookID'];?>">
                 <p>Nosaukums</p>
                 <input type="text" name="Title" value="<?=$book['title'];?>">
@@ -42,7 +44,9 @@
                 <input type="date" name="Date" value="<?=$book['date'];?>">
                 <p>Rating</p>
                 <input type="text" name="Rating" value="<?=$book['rating'];?>">
-                <button type="submit" class="update-book" name="update-book">Atjaunot grāmatu</button>
+                <div style="margin-top: 20px;">
+                    <button type="submit" class="update-book" name="update-book">Atjaunot grāmatu</button>
+                <div>
             </div>
         </form>   
     </div>  
