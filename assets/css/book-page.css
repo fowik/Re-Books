@@ -54,10 +54,7 @@
     padding-left: 60px;
 }
 
-.checked {
-    color: orange;
-}
-
-.fa-star:hover {
-    color: orange;
+.rating {
+    background-color: #23A962;
+    width: 1000px;
 }

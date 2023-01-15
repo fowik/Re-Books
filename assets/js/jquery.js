@@ -73,5 +73,3 @@ function hide() {
     var div = document.getElementById('access-wrapper');
     div.style.display = 'none';
 }
-
-
