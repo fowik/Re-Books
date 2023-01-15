@@ -55,6 +55,6 @@
 }
 
 .rating {
-    background-color: #23A962;
-    width: 1000px;
+    -khtml-user-select: none; 
+    user-select: none;
 }

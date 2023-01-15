@@ -12,10 +12,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/nav-bar.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
     <meta charset="UTF-8">
     <title>Udpate book</title>
 </head>
 <body>
+    <div class='main'>
     <div class="add-menu popUpWrapper">
         <!-- <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a> -->
         <form action="vendor/updatebook.php" method="POST"  enctype="multipart/form-data"> 
@@ -42,6 +46,7 @@
             </div>
         </form>   
     </div>  
+    </div>
 </body>
 </html>
 

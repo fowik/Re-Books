@@ -9,7 +9,6 @@
     $book_result = mysqli_fetch_assoc($book_result);
 
     //rating
-
     if (isset($_POST['save'])) {
         $userID = $_SESSION['user']['userID'];
         $uID = $conn->real_escape_string($_POST['uID']);
@@ -17,7 +16,7 @@
         $ratedIndex++;
 
         if (!$uID) {
-            $conn->query("INSERT INTO ratingsystem (`rateIndex`, `FK_userID`, `FK_bookID`) VALUES ('$ratedIndex','$userID','$book_id')");
+            $conn->query("INSERT INTO `ratingsystem` (`rateIndex`, `FK_userID`) VALUES ('$ratedIndex', '$userID')");
             $sql = $conn->query("SELECT id FROM ratingsystem ORDER BY id DESC LIMIT 1");
             $uData = $sql->fetch_assoc();
             $uID = $uData['id'];
@@ -25,6 +24,7 @@
             $conn->query("UPDATE ratingsystem SET rateIndex='$ratedIndex' WHERE id='$uID'");
 
         exit(json_encode(array('id' => $uID)));
+        header("Location: ../");
     }
 
     $sql = $conn->query("SELECT id FROM ratingsystem");
@@ -75,7 +75,7 @@
                         <i class="fa fa-star fa-2x" data-index="2"></i>
                         <i class="fa fa-star fa-2x" data-index="3"></i>
                         <i class="fa fa-star fa-2x" data-index="4"></i>
-                        <br><br>
+                        <br>
                         <?php echo round($avg,2) ?>
                     </div>
 
@@ -129,7 +129,7 @@
 
                         function setStars(max) {
                             for (var i=0; i <= max; i++)
-                                $('.fa-star:eq('+i+')').css('color', 'green');
+                                $('.fa-star:eq('+i+')').css('color', 'orange');
                         }
 
                         function resetStarColors() {
