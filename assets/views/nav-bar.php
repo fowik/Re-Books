@@ -4,7 +4,6 @@
             <h2 class="logo"><a href="index.php">Re-<span>Books</span></a></h2>
             <!-- <li class="log-reg-panel"><a href="#">Ienākt</a></li> -->
             <li class="log-reg-panel">
-				
 					<?php
 						if (isset($_SESSION['user'])) {
 							echo '<a href="register.php">' . $_SESSION['user']['username'] . '</a>';

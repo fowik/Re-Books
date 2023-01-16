@@ -8,24 +8,9 @@
     $book_result = mysqli_query($conn, $book) or die("Connection failed");
     $book_result = mysqli_fetch_assoc($book_result);
 
-    //rating
-    if (isset($_POST['save'])) {
-        $userID = $_SESSION['user']['userID'];
-        $uID = $conn->real_escape_string($_POST['uID']);
-        $ratedIndex = $conn->real_escape_string($_POST['ratedIndex']);
-        $ratedIndex++;
-
-        if (!$uID) {
-            $conn->query("INSERT INTO `ratingsystem` (`rateIndex`, `FK_userID`) VALUES ('$ratedIndex', '$userID')");
-            $sql = $conn->query("SELECT id FROM ratingsystem ORDER BY id DESC LIMIT 1");
-            $uData = $sql->fetch_assoc();
-            $uID = $uData['id'];
-        } else
-            $conn->query("UPDATE ratingsystem SET rateIndex='$ratedIndex' WHERE id='$uID'");
-
-        exit(json_encode(array('id' => $uID)));
-        header("Location: ../");
-    }
+    //Rating output
+    $rating = "SELECT * FROM `rating` WHERE `FK_bookID` = '$book_id'";
+    $rating_query =  mysqli_query($conn, $book);
 
     $sql = $conn->query("SELECT id FROM ratingsystem");
     $numR = $sql->num_rows;
@@ -68,74 +53,15 @@
                     <div class="book-content">
                     <h1><?= $book_result['title']; ?></h1>
                     <h2><?= $book_result['author']; ?></h2>
-
-                    <div class="rating">Vērtējums: 
-                        <i class="fa fa-star fa-2x" data-index="0"></i>
-                        <i class="fa fa-star fa-2x" data-index="1"></i>
-                        <i class="fa fa-star fa-2x" data-index="2"></i>
-                        <i class="fa fa-star fa-2x" data-index="3"></i>
-                        <i class="fa fa-star fa-2x" data-index="4"></i>
-                        <br>
+                    Vērtējums: 
+                    <div class="rating" data-total-value="<?php echo round($avg, 0) ?>">
+                        <div class="rating-item" data-item-value="5">★</div>
+                        <div class="rating-item" data-item-value="4">★</div>
+                        <div class="rating-item" data-item-value="3">★</div>
+                        <div class="rating-item" data-item-value="2">★</div>
+                        <div class="rating-item" data-item-value="1">★</div>
                         <?php echo round($avg,2) ?>
                     </div>
-
-                    <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-                    <script>
-                        var ratedIndex = -1, uID = 0;
-
-                        $(document).ready(function () {
-                            resetStarColors();
-
-                            if (localStorage.getItem('ratedIndex') != null) {
-                                setStars(parseInt(localStorage.getItem('ratedIndex')));
-                                uID = localStorage.getItem('uID');
-                            }
-
-                            $('.fa-star').on('click', function () {
-                            ratedIndex = parseInt($(this).data('index'));
-                            localStorage.setItem('ratedIndex', ratedIndex);
-                            saveToTheDB();
-                            });
-
-                            $('.fa-star').mouseover(function () {
-                                resetStarColors();
-                                var currentIndex = parseInt($(this).data('index'));
-                                setStars(currentIndex);
-                            });
-
-                            $('.fa-star').mouseleave(function () {
-                                resetStarColors();
-
-                                if (ratedIndex != -1)
-                                    setStars(ratedIndex);
-                            });
-                        });
-
-                        function saveToTheDB() {
-                            $.ajax({
-                            url: "book-page.php",
-                            method: "POST",
-                            dataType: 'json',
-                            data: {
-                                save: 1,
-                                uID: uID,
-                                ratedIndex: ratedIndex
-                            }, success: function (r) {
-                                    uID = r.id;
-                                    localStorage.setItem('uID', uID);
-                            }
-                            });
-                        }
-
-                        function setStars(max) {
-                            for (var i=0; i <= max; i++)
-                                $('.fa-star:eq('+i+')').css('color', 'orange');
-                        }
-
-                        function resetStarColors() {
-                            $('.fa-star').css('color', 'white');
-                        }
-                    </script>
 
                     <div class="button-read">
                         <a href="">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievieont</a>
@@ -160,5 +86,39 @@
     </div>
     
     <script src="./jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script> -->
+    <script>
+        const ratingItemsList = document.querySelectorAll('.rating-item');
+        const ratingItemsArray = Array.prototype.slice.call(ratingItemsList);
+        ratingItemsArray.forEach(item => 
+            item.addEventListener('click', () => {
+
+                const userID = <?php echo $_SESSION['user']['userID']?>;
+                const bookID = <?php echo $_GET['bookID']?>;
+                const { itemValue } = item.dataset;
+                item.parentNode.dataset.totalValue = itemValue;
+
+                $.ajax({
+                    url: "vendor/rating.php",
+                    type: 'POST',
+                    data: {
+                        userID: userID,
+                        bookID: bookID,
+                        itemValue: itemValue
+                    },
+                    beforeSend: ()=>{},
+                    success: (data)=>{
+                        console.log(data);
+                    },
+                    error: (xhr)=>{
+                        console.log(xhr);
+                    },
+                    complete: ()=>{
+                    }
+                });
+            })
+        );
+    </script>
 </body>
 </html>

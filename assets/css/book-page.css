@@ -57,4 +57,25 @@
 .rating {
     -khtml-user-select: none; 
     user-select: none;
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+.rating-item {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.rating-item:hover, .rating-item:hover ~ .rating-item {
+    color: #cdcdcd;
+}
+
+.rating[data-total-value="1"] .rating-item:nth-child(n + 5),
+.rating[data-total-value="2"] .rating-item:nth-child(n + 4),
+.rating[data-total-value="3"] .rating-item:nth-child(n + 3),
+.rating[data-total-value="4"] .rating-item:nth-child(n + 2),
+.rating[data-total-value="5"] .rating-item:nth-child(n + 1){
+    color:orange;
 }
