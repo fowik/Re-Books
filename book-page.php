@@ -9,10 +9,7 @@
     $book_result = mysqli_fetch_assoc($book_result);
 
     //Rating output
-    $rating = "SELECT * FROM `rating` WHERE `FK_bookID` = '$book_id'";
-    $rating_query =  mysqli_query($conn, $book);
-
-    $sql = $conn->query("SELECT * FROM ratingsystem WHERE `FK_bookID` = '$book_id'");
+    $sql = $conn->query("SELECT * FROM `ratingsystem` WHERE `FK_bookID` = '$book_id'");
     $numR = $sql->num_rows;
 
     $sql = $conn->query("SELECT SUM(rateIndex) AS total FROM ratingsystem WHERE `FK_bookID` = '$book_id'");
@@ -23,7 +20,6 @@
         $avg = 0;
     } else {
         $avg = $total / $numR;
-
     }
 ?>
 
@@ -66,10 +62,9 @@
                         <div class="rating-item" data-item-value="2">★</div>
                         <div class="rating-item" data-item-value="1">★</div>
                     </div>
-                    <div> <?php echo round($avg,2) ?> </div>
 
                     <div class="button-read">
-                        <a href="">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievieont</a>
+                        <a href="">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievienot</a>
                         <?php 
                             if (isset($_SESSION['message'])) {
                             echo '<p class="msg"> ' . $_SESSION['message'] .'</p>';
@@ -92,15 +87,13 @@
     
     <script src="./jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script> -->
     <script>
         const ratingItemsList = document.querySelectorAll('.rating-item');
         const ratingItemsArray = Array.prototype.slice.call(ratingItemsList);
         ratingItemsArray.forEach(item => 
             item.addEventListener('click', () => {
-
-                const userID = <?php echo $_SESSION['user']['userID']?>;
-                const bookID = <?php echo $_GET['bookID']?>;
+                const userID = <?php echo $_SESSION['user']['userID'] ?>;
+                const bookID = <?php echo $_GET['bookID'] ?>;
                 const { itemValue } = item.dataset;
                 item.parentNode.dataset.totalValue = itemValue;
 

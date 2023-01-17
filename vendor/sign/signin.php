@@ -17,7 +17,7 @@
             "email" => $user['email'],
             "admin" => $user['admin']
         ];
-
+        
         header('Location: ../../user.php');
     } else {
         $_SESSION['message'] = 'Invalid login or password';

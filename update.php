@@ -24,7 +24,7 @@
     <div class='main'>
     <div class="add-menu popUpWrapper">
         <!-- <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a> -->
-        <form action="vendor/updatebook.php" method="POST"  enctype="multipart/form-data"> 
+        <form action="vendor/updatebook.php" method="POST" enctype="multipart/form-data"> 
             <div class="popUpInputs">
                 <h1>Atjaunot</h1>
                 <input type="hidden" name="Book_ID" value="<?=$book['bookID'];?>">

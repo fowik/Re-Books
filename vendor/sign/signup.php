@@ -35,16 +35,16 @@
             document.getElementById("pieslegties").style.display="block";';
             header("Location: ../../register.php");
             exit();
-        }
-        else
+        } else {
             $_SESSION["message"] = 'Kļūme notika veidojot jūsu profilu.';
             header("Location: ../../register.php");
             exit();
-
+        }
         header("Location: ../../register.php");
     }
-    else
+    else {
         $_SESSION["message"] = 'Šis lietotājvārds / Epasts tiek jau izmantots. Izmantojiet citu.';
         header("Location: ../../register.php");
         exit();
+    }
 ?>
