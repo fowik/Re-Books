@@ -3,10 +3,22 @@
     require_once "vendor/connect.php";
 
     //Books output
-    $books = "SELECT * FROM books";
+    $books = "SELECT
+        b.bookID
+        , b.title
+        , b.author
+        , b.image
+        , (Case When SUM(r.rateIndex)/cout.cout then SUM(r.rateIndex)/cout.cout ELSE 0 END) as total
+    FROM books AS b
+    LEFT JOIN ratingsystem AS r
+        ON b.bookID = r.FK_bookID
+    LEFT JOIN (SELECT FK_bookID AS 'book_ID', COUNT(rateIndex) AS 'cout' FROM ratingsystem GROUP BY FK_bookID) AS cout
+        ON r.FK_bookID = cout.book_ID
+    GROUP BY cout.book_ID, b.bookID, cout.cout";
     $books_result = mysqli_query($conn, $books) or die("Connection failed");
 
     for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
+    
 ?>
 
 <!DOCTYPE html>
@@ -61,13 +73,13 @@
                                             <div class="book-title">
                                                 <p class="book-name"><?= $book['title'] ?></p>
                                                 <p class="author"><?= $book['author'] ?></p>
-                                                <p class="rating-stars">
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </p>
+                                                <div class="rating" data-total-value="<?php echo round($book['total'], 0) ?>">
+                                                    <div class="rating-item" data-item-value="5">★</div>
+                                                    <div class="rating-item" data-item-value="4">★</div>
+                                                    <div class="rating-item" data-item-value="3">★</div>
+                                                    <div class="rating-item" data-item-value="2">★</div>
+                                                    <div class="rating-item" data-item-value="1">★</div>
+                                                </div>
                                             </div>
                                         </span>
                                     </div>

@@ -12,14 +12,19 @@
     $rating = "SELECT * FROM `rating` WHERE `FK_bookID` = '$book_id'";
     $rating_query =  mysqli_query($conn, $book);
 
-    $sql = $conn->query("SELECT id FROM ratingsystem");
+    $sql = $conn->query("SELECT * FROM ratingsystem WHERE `FK_bookID` = '$book_id'");
     $numR = $sql->num_rows;
 
-    $sql = $conn->query("SELECT SUM(rateIndex) AS total FROM ratingsystem");
+    $sql = $conn->query("SELECT SUM(rateIndex) AS total FROM ratingsystem WHERE `FK_bookID` = '$book_id'");
     $rData = $sql->fetch_array();
     $total = $rData['total'];
 
-    $avg = $total / $numR;
+    if($total < 1 or $numR < 1) {
+        $avg = 0;
+    } else {
+        $avg = $total / $numR;
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -60,8 +65,8 @@
                         <div class="rating-item" data-item-value="3">★</div>
                         <div class="rating-item" data-item-value="2">★</div>
                         <div class="rating-item" data-item-value="1">★</div>
-                        <?php echo round($avg,2) ?>
                     </div>
+                    <div> <?php echo round($avg,2) ?> </div>
 
                     <div class="button-read">
                         <a href="">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievieont</a>

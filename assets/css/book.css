@@ -43,6 +43,7 @@
     font-size: 12px;
     margin-top: -12px;
     margin-left: 4px;
+    margin-bottom: -10px;
 }
 
 link { 
@@ -57,7 +58,7 @@ link {
 
 .rating-stars {
     margin-top: -10px;
-    margin-left: 4px;
+    margin-left: 10px;
     margin-bottom: 5px;
 }
 
