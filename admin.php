@@ -27,6 +27,11 @@
     //Books delete
     if (isset($_GET['delbook'])) {
         $book_id = $_GET['delbook'];
+        $books_del = "DELETE FROM `ratingsystem` WHERE `FK_bookID` = $book_id";
+        mysqli_query($conn, $books_del) or die(mysqli_error($conn));
+
+        $books_del = "DELETE FROM `favourites` WHERE `FK_booksID` = $book_id";
+        mysqli_query($conn, $books_del) or die(mysqli_error($conn));
 
         $books_del = "DELETE FROM `books` WHERE `bookID` = $book_id";
         //echo $books_del;

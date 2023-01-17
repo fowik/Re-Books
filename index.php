@@ -18,6 +18,11 @@
     $books_result = mysqli_query($conn, $books) or die("Connection failed");
 
     for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
+
+    $category = "SELECT * FROM `category`";
+    $category_result = mysqli_query($conn, $category);
+
+    for ($catdata = []; $row = mysqli_fetch_assoc($category_result); $catdata[] = $row);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +55,9 @@
                 <div class="category-bar">
                     <select name="category" id="category">
                         <option value="category" disabled selected>Kategorijas</option>
-                        <option value="drama">Drama</option>
+                        <?php foreach ($catdata as $cat) { ?>
+                            <option value="drama"><?= $cat['CategName'] ?></option>
+                        <?php }?>
                     </select>
                 </div>
             </div>
