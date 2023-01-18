@@ -24,7 +24,30 @@
     $category_result = mysqli_query($conn, $category);
 
     for ($catdata = []; $row = mysqli_fetch_assoc($category_result); $catdata[] = $row);
-?>
+
+    //Search bar
+    if (isset($_POST["submit"])) {
+        $str = $_POST["search"];
+        $sth = "SELECT * FROM `books` WHERE `title` LIKE '%$str%'";
+    
+        $sth_result = mysqli_query($conn, $sth);
+        for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
+    
+        foreach ($sthdata as $row) {?>
+            <br><br><br>
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><?php echo $row['title'] ?></td>
+                    <td><?php echo $row['description']?></td>
+                </tr>
+    
+            </table>
+        <?php }?>
+        <?php }?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,10 +72,12 @@
         <div class="main">
 
             <div class="search-area">
-                <div class="search-bar">
-                    <input type="text" placeholder="Meklēt...">
-                    <button>Meklēt</button>
-                </div>
+                <form method = 'post'>
+                    <div class="search-bar">
+                        <input type="text" name="search" placeholder="Meklēt...">
+                        <input type="submit" name="submit">
+                    </div>
+                </form>
                 <div class="category-bar">
                     <select name="category" id="category" style = "z-index: auto ; " onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                         <option value="category" disabled selected>Kategorijas</option>
