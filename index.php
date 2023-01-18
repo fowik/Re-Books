@@ -28,26 +28,10 @@
     //Search bar
     if (isset($_POST["submit"])) {
         $str = $_POST["search"];
-        $sth = "SELECT * FROM `books` WHERE `title` LIKE '%$str%'";
-    
-        $sth_result = mysqli_query($conn, $sth);
-        for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
-    
-        foreach ($sthdata as $row) {?>
-            <br><br><br>
-            <table>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td><?php echo $row['title'] ?></td>
-                    <td><?php echo $row['description']?></td>
-                </tr>
-    
-            </table>
-        <?php }?>
-        <?php }?>
+        header("Location: search.php?title=$str");
+    } 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,10 +56,10 @@
         <div class="main">
 
             <div class="search-area">
-                <form method = 'post'>
+                <form method = "POST">
                     <div class="search-bar">
                         <input type="text" name="search" placeholder="Meklēt...">
-                        <input type="submit" name="submit">
+                        <button type="submit" name="submit">Mēklēt</button>
                     </div>
                 </form>
                 <div class="category-bar">
