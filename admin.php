@@ -88,6 +88,11 @@
         header('Location: ./admin.php');
     }
 
+    //Category output
+    $category = "SELECT * FROM `category`";
+    $category_result = mysqli_query($conn, $category);
+
+    for ($catdata = []; $row = mysqli_fetch_assoc($category_result); $catdata[] = $row);
 ?>
 
 
@@ -200,17 +205,24 @@
                             <a onclick="closePopup()"><button class="closePopup" id="closePopup">X</button></a>
                             <div class="popUpInputs">
                                 <label>Nosaukums</label>
-                                <input type="text"  name="title" placeholder="Nosaukums">
+                                <input type="text"  name="title" placeholder="Nosaukums" required>
                                 <label>Autors</label>
-                                <input type="text"  name="author" placeholder="Autors">
+                                <input type="text"  name="author" placeholder="Autors" required>
                                 <label>Apraksts</label>
-                                <input type="text"  name="description" placeholder="Apraksts">
+                                <input type="text"  name="description" placeholder="Apraksts" required>
                                 <label>Bilde</label>
-                                <input type="file"  name="image" placeholder="Image">
+                                <input type="file"  name="image" placeholder="Image" required>
                                 <label>Kategorija</label>
-                                <input type="text"  name="category" placeholder="Kategorija">
+                                <div style = "margin-top: 10px; margin-bottom: 30px">
+                                    <select id="category" name="category" style = "z-index: 1; position: absolute; width: 300px" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                                        <option value="category" disabled selected>Kategorijas</option>
+                                        <?php foreach ($catdata as $cat) { ?>
+                                            <option name="category" required><?= $cat['CategName'] ?></option>
+                                        <?php }?>
+                                    </select>
+                                </div>
                                 <label>Datums</label>
-                                <input type="date"  name="date" placeholder="Datums">
+                                <input type="date"  name="date" placeholder="Datums" required>
                                 
                                 <button type="sumbit" class="add-book" name="add-book">Pievienot grāmatu</button>
                             </div>

@@ -44,12 +44,15 @@ hr {
 }
 
 .category-bar select {
+    position: absolute;
     padding: 6px;
     border: none;
     margin-top: 8px;
+    margin-left: -147px;
     font-size: 17px;
-    width: 25.77%;
+    width: 15.45%;
     outline:none;
+    z-index: 3;
 }
 
 .new-books h1 {

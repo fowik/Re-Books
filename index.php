@@ -19,6 +19,7 @@
 
     for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
 
+    //Category output
     $category = "SELECT * FROM `category`";
     $category_result = mysqli_query($conn, $category);
 
@@ -36,7 +37,7 @@
     <link rel="stylesheet" href="./assets/css/index.css">
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <title>Re-Books</title>
 </head>
 <body>
@@ -53,10 +54,10 @@
                     <button>Meklēt</button>
                 </div>
                 <div class="category-bar">
-                    <select name="category" id="category">
+                    <select name="category" id="category" style = "z-index: auto ; " onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                         <option value="category" disabled selected>Kategorijas</option>
                         <?php foreach ($catdata as $cat) { ?>
-                            <option value="drama"><?= $cat['CategName'] ?></option>
+                            <option value="drama" name="category"><?= $cat['CategName'] ?></option>
                         <?php }?>
                     </select>
                 </div>

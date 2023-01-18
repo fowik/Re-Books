@@ -28,28 +28,33 @@ CREATE TABLE IF NOT EXISTS `books` (
   `image` varchar(500) DEFAULT NULL,
   `category` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `rating` int DEFAULT NULL,
   `clicks` bigint DEFAULT NULL,
   PRIMARY KEY (`bookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.books: ~3 rows (приблизительно)
-INSERT INTO `books` (`bookID`, `title`, `author`, `description`, `image`, `category`, `date`, `rating`, `clicks`) VALUES
-	(15, 'aR', 'NIGGER RIMSA', 'adkoahwdioawhjdoahwdioahjidoahjwdokjwiohdaiosdhoadhoawdhaiowdhaowdhaidhwaiodhoaid', 'uploads/16736252531003w-4he1eqkeAQg.webp', 'Drama', '2022-12-28', 12, NULL),
-	(16, 'awdawddawda', 'wdawdadad', 'dddddd', 'uploads/1673988439step-3-15.png', 'awdadawdadawda', '2023-01-22', 1, NULL),
-	(22, 'FOOL MAN', 'Emīls Strēlis', 'nav', 'uploads/167398950715ef99d3621dba3c18818ad9cc0407f5.jpg', 'Drama', '2023-01-15', NULL, NULL);
+-- Дамп данных таблицы re-books.books: ~1 rows (приблизительно)
+INSERT INTO `books` (`bookID`, `title`, `author`, `description`, `image`, `category`, `date`, `clicks`) VALUES
+	(29, 'FOOL MAN', 'Robert Rodriques', 'nav', 'uploads/1674059552cover1__w220.jpg', '', '2023-01-04', NULL);
 
 -- Дамп структуры для таблица re-books.category
 CREATE TABLE IF NOT EXISTS `category` (
   `categoryID` int NOT NULL AUTO_INCREMENT,
   `CategName` varchar(100) NOT NULL,
   PRIMARY KEY (`categoryID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.category: ~2 rows (приблизительно)
+-- Дамп данных таблицы re-books.category: ~10 rows (приблизительно)
 INSERT INTO `category` (`categoryID`, `CategName`) VALUES
 	(1, 'Fantāzija'),
-	(2, 'Fantastika');
+	(2, 'Fantastika'),
+	(3, 'Detektīvi'),
+	(4, 'Mīlas romāni'),
+	(5, 'Biznesa literatūra'),
+	(6, 'Datorliteratūra'),
+	(7, 'Psiholoģija'),
+	(8, 'Vēsture'),
+	(9, 'Skolas mācību grāmatas'),
+	(10, 'Ārpusskolas lasīšana');
 
 -- Дамп структуры для таблица re-books.favourites
 CREATE TABLE IF NOT EXISTS `favourites` (
@@ -61,12 +66,11 @@ CREATE TABLE IF NOT EXISTS `favourites` (
   KEY `books_ID` (`FK_booksID`) USING BTREE,
   CONSTRAINT `FK_favourites_books` FOREIGN KEY (`FK_booksID`) REFERENCES `books` (`bookID`),
   CONSTRAINT `FK_favourites_users` FOREIGN KEY (`FK_userID`) REFERENCES `users` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.favourites: ~2 rows (приблизительно)
+-- Дамп данных таблицы re-books.favourites: ~1 rows (приблизительно)
 INSERT INTO `favourites` (`favouritesID`, `FK_booksID`, `FK_userID`) VALUES
-	(27, 16, 14),
-	(36, 15, 14);
+	(42, 29, 13);
 
 -- Дамп структуры для таблица re-books.ratingsystem
 CREATE TABLE IF NOT EXISTS `ratingsystem` (
@@ -79,15 +83,11 @@ CREATE TABLE IF NOT EXISTS `ratingsystem` (
   KEY `FK_ratingsystem_books` (`FK_bookID`),
   CONSTRAINT `FK_ratingsystem_books` FOREIGN KEY (`FK_bookID`) REFERENCES `books` (`bookID`),
   CONSTRAINT `FK_ratingsystem_users` FOREIGN KEY (`FK_userID`) REFERENCES `users` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.ratingsystem: ~5 rows (приблизительно)
+-- Дамп данных таблицы re-books.ratingsystem: ~1 rows (приблизительно)
 INSERT INTO `ratingsystem` (`id`, `rateIndex`, `FK_userID`, `FK_bookID`) VALUES
-	(168, 3, 14, 15),
-	(169, 1, 13, 15),
-	(171, 2, 13, 16),
-	(172, 2, 14, 16),
-	(174, 4, 26, 16);
+	(176, 4, 13, 29);
 
 -- Дамп структуры для таблица re-books.users
 CREATE TABLE IF NOT EXISTS `users` (

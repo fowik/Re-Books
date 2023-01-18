@@ -7,6 +7,11 @@
     $book = mysqli_fetch_assoc($book);
     //print_r($book);
 
+    //Category output
+    $category = "SELECT * FROM `category`";
+    $category_result = mysqli_query($conn, $category);
+
+    for ($catdata = []; $row = mysqli_fetch_assoc($category_result); $catdata[] = $row);
 ?>
 
 <!DOCTYPE html>
@@ -39,11 +44,14 @@
                 <br>
                 <input type="file" name="image">
                 <p>Kategorija</p>
-                <input type="text" name="Category" value="<?=$book['category'];?>">
+                <select name="Category" id="category" style = "z-index: auto ; " onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                        <option value="category" disabled selected><?= $book['category'] ?></option>
+                        <?php foreach ($catdata as $cat) { ?>
+                            <option name="category"><?= $cat['CategName'] ?></option>
+                        <?php }?>
+                    </select>
                 <p>Datums</p>
                 <input type="date" name="Date" value="<?=$book['date'];?>">
-                <p>Rating</p>
-                <input type="text" name="Rating" value="<?=$book['rating'];?>">
                 <div style="margin-top: 20px;">
                     <button type="submit" class="update-book" name="update-book">Atjaunot grāmatu</button>
                 <div>
