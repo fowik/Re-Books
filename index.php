@@ -1,4 +1,6 @@
 <?php
+
+
     session_start();
     require_once "vendor/connect.php";
 
@@ -21,9 +23,11 @@
 
     //Category output
     $category = "SELECT * FROM `category`";
+
     $category_result = mysqli_query($conn, $category);
 
     for ($catdata = []; $row = mysqli_fetch_assoc($category_result); $catdata[] = $row);
+
 
     //Search bar
     if (isset($_POST["submit"])) {

@@ -20,19 +20,20 @@
 
     //favourite books output
     $user_id = $_SESSION['user']['userID'];
-    $favoruites = 
-    "SELECT * 
-    FROM `favourites` 
-    INNER JOIN `books` 
-        ON `favourites`.`FK_booksID` = `books`.`bookID` 
-    INNER JOIN `users` 
-        ON `favourites`.`FK_userID` = `users`.`userID`
-    WHERE `FK_userID` = '$user_id'";
+    echo($user_id);
+    $favoruites = "SELECT * 
+    FROM `favourites` AS f
+    INNER JOIN `books` AS b
+        ON f.FK_booksID = b.bookID
+    INNER JOIN `users` AS u
+        ON f.FK_userID = u.userID
+    WHERE f.FK_userID = '$user_id'";
     
-    //echo $favoruites;
     $favoruites_result = mysqli_query($conn, $favoruites) or die("Connection failed");
     
-    for ($favoruitedata = []; $row = mysqli_fetch_assoc($favoruites_result); $favoruitedata[] = $row);
+    for ($favoruitedata = []; $row = mysqli_fetch_assoc($favoruites_result); $favoruitedata[] = $row) {
+
+    };
 
     //book delete from favourites
     if (isset($_GET['delfav'])) {

@@ -68,7 +68,7 @@
     //Books output
     $books = "SELECT * FROM `books`";
     $books_result = mysqli_query($conn, $books) or die("Connection failed");
-
+        
     for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
 
     //Users output
