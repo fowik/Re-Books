@@ -20,7 +20,7 @@
 
     //favourite books output
     $user_id = $_SESSION['user']['userID'];
-    echo($user_id);
+
     $favoruites = "SELECT * 
     FROM `favourites` AS f
     INNER JOIN `books` AS b

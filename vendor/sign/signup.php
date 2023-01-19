@@ -19,6 +19,30 @@
         header("Location: ../../register.php");
         exit();
     }
+    
+    if (!($password === $password_confirm)) {
+        $_SESSION["message"] = 'Jūsu parole nesakrīt!';
+        header("Location: ../../register.php");
+        exit();
+    }
+    
+    if (!($email === $email_confirm)) {
+        $_SESSION["message"] = 'Jūsu e-pasta adrese nesakrīt! ' . $email . "1" . $email_confirm . "2" . $password . "3" . $password_confirm . "4" . $username;
+        header("Location: ../../register.php");
+        exit();
+    }
+                
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION["message"] = 'Jūs neesat ievadijuši pareizu e-pastu!';
+        header("Location: ../../register.php");
+        exit();
+    }
+                    
+    if ( strlen($password) < 8 && strpbrk($password, "@!#$.,:;()") == false) {
+        $_SESSION["message"] = 'Jūsu parole ir pārāk vāja. Ievadiet paroli vismaz 8 simbolus garu, kas iekļauj Lielo burtu un simbolu!';
+        header("Location: ../../register.php");
+        exit();
+    }
 
     $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username' OR email='$email'");
     //User exist
