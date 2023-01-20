@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./assets/css/register.css">
     <link rel="stylesheet" href="./assets/css/nav-bar.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/message.css">
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <title>Registration</title>
 </head>
@@ -29,7 +30,10 @@
                   <h1>Reģistrācija</h1>
                   <?php 
                     if (isset($_SESSION['message'])) {
-                      echo '<p class="msg"> ' . $_SESSION['message'] .'</p>';
+                      echo '
+                      <div class = msg-cover>
+                        <p class="msg"> ' . $_SESSION['message'] .'</p>
+                      </div>';
                     }
                     unset($_SESSION['message']);
                   ?>

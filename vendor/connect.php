@@ -1,8 +1,8 @@
 <?php 
-    $conn = mysqli_connect("localhost:3306", "root", "", "re-books");
+    $conn = new mysqli('localhost', 'root', '', 're-books');
 
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    // echo "connected";
+    /* Set the desired charset after establishing a connection */
+    $conn->set_charset('utf8mb4');
+
+    //printf("Success... %s\n", $conn->host_info);
 ?>
