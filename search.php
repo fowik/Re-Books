@@ -52,6 +52,7 @@
     <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/book.css">
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/search.css">
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
     <title>Mēklēt pēc vārda <?php echo $str?></title>
@@ -62,9 +63,12 @@
         <?php include 'assets/views/nav-bar.php';?>
             
             <div class="main">
+                <h1 class="title">Meklēšanas rezultāti "<?php echo $str?>"</h1>
+                <div class="main-book-row">
                 <br><br>
                 <?php if($sthdata) {
                     foreach ($sthdata as $row) {?>
+                    <div class="book-row">
                         <div class="swiper-slide">
                         <div class="book-cover mySwiper">
                             <span class="link">
@@ -86,11 +90,13 @@
                                 </div>
                             </span>
                         </div>
+                        </div>
                     </div>
                 <?php }
                 } else {
                     echo "Pēc Jūsu pieprasījuma nekas nebija atrasts";
                 }?>
+                </div>
             </div>
 
         <?php include './assets/views/footer.html';?>
