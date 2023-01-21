@@ -32,7 +32,12 @@
     //Search bar
     if (isset($_POST["submit"])) {
         $str = $_POST["search"];
-        header("Location: search.php?title=$str");
+        $categ = $_POST["category"];
+        if($str === ''){
+            header("Location: search.php?category=$categ");
+        } else {
+            header("Location: search.php?title=$str");
+        }
     } 
 
 ?>
@@ -65,15 +70,15 @@
                         <input type="text" name="search" placeholder="Meklēt...">
                         <button type="submit" name="submit">Mēklēt</button>
                     </div>
+                    <div class="category-bar">
+                        <select name="category" id="category" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                            <option value="category" disabled selected>Kategorijas</option>
+                            <?php foreach ($catdata as $cat) { ?>
+                                <option name="category"><?= $cat['CategName'] ?></option>
+                            <?php }?>
+                        </select>
+                    </div>
                 </form>
-                <div class="category-bar">
-                    <select name="category" id="category" style = "z-index: auto ; " onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                        <option value="category" disabled selected>Kategorijas</option>
-                        <?php foreach ($catdata as $cat) { ?>
-                            <option value="drama" name="category"><?= $cat['CategName'] ?></option>
-                        <?php }?>
-                    </select>
-                </div>
             </div>
             <hr color="#34344A">
             <div class="slider swiper">

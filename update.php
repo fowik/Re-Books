@@ -45,11 +45,11 @@
                 <input type="file" name="image">
                 <p>Kategorija</p>
                 <select name="Category" id="category" style = "z-index: auto ; " onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                        <option value="category" disabled selected><?= $book['category'] ?></option>
-                        <?php foreach ($catdata as $cat) { ?>
-                            <option name="category"><?= $cat['CategName'] ?></option>
-                        <?php }?>
-                    </select>
+                    <option value="category" disabled selected><?= $book['category'] ?></option>
+                    <?php foreach ($catdata as $cat) { ?>
+                        <option name="category"><?= $cat['CategName'] ?></option>
+                    <?php }?>
+                </select>
                 <p>Datums</p>
                 <input type="date" name="Date" value="<?=$book['date'];?>">
                 <div style="margin-top: 20px;">

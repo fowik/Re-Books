@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once "vendor/connect.php";
-
+    
     //Session check
     if (!$_SESSION['user']) {
         header('Location: index.php');

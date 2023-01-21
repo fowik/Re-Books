@@ -1,25 +1,47 @@
 <?php 
-session_start();
-require_once "vendor/connect.php";
+    session_start();
+    require_once "vendor/connect.php";
 
-$str = $_GET['title'];
-
-$sth = "SELECT
-            b.bookID
-            , b.title
-            , b.author
-            , b.image
-            , (Case When SUM(r.rateIndex)/cout.cout then SUM(r.rateIndex)/cout.cout ELSE 0 END) as total
-        FROM books AS b
-        LEFT JOIN ratingsystem AS r
-            ON b.bookID = r.FK_bookID
-        LEFT JOIN (SELECT FK_bookID AS 'book_ID', COUNT(rateIndex) AS 'cout' FROM ratingsystem GROUP BY FK_bookID) AS cout
-            ON r.FK_bookID = cout.book_ID
-        WHERE b.`title` LIKE '%$str%'
-        GROUP BY cout.book_ID, b.bookID, cout.cout";
-    
+    if(isset($_GET['title'])) {
+        $str = $_GET['title'];
+        $sth = "SELECT
+                b.bookID
+                , b.title
+                , b.author
+                , b.image
+                , (Case When SUM(r.rateIndex)/cout.cout then SUM(r.rateIndex)/cout.cout ELSE 0 END) as total
+            FROM books AS b
+            LEFT JOIN ratingsystem AS r
+                ON b.bookID = r.FK_bookID
+            LEFT JOIN (SELECT FK_bookID AS 'book_ID', COUNT(rateIndex) AS 'cout' FROM ratingsystem GROUP BY FK_bookID) AS cout
+                ON r.FK_bookID = cout.book_ID
+            WHERE b.`title` LIKE '%$str%'
+            GROUP BY cout.book_ID, b.bookID, cout.cout";
+        
         $sth_result = mysqli_query($conn, $sth);
         for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
+    }
+
+    if(isset($_GET['category'])) {
+        $str = $_GET['category'];
+        echo $str;
+        $sth = "SELECT
+                b.bookID
+                , b.title
+                , b.author
+                , b.image
+                , (Case When SUM(r.rateIndex)/cout.cout then SUM(r.rateIndex)/cout.cout ELSE 0 END) as total
+            FROM books AS b
+            LEFT JOIN ratingsystem AS r
+                ON b.bookID = r.FK_bookID
+            LEFT JOIN (SELECT FK_bookID AS 'book_ID', COUNT(rateIndex) AS 'cout' FROM ratingsystem GROUP BY FK_bookID) AS cout
+                ON r.FK_bookID = cout.book_ID
+            WHERE b.`category` LIKE '%$str%'
+            GROUP BY cout.book_ID, b.bookID, cout.cout";
+
+        $sth_result = mysqli_query($conn, $sth);
+        for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
+    }
         
 ?>
 <!DOCTYPE html>
