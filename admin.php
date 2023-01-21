@@ -149,7 +149,7 @@
                             <?php foreach ($bookdata as $book) { ?>
                                 <div class="fav-book">
                                     <div>
-                                        <h2><?= $book['title'] ?> <?= $book['bookID'] ?></h2>
+                                        <h2><?= $book['title'] ?></h2>
                                     </div>
                                     <div class="object-to-right">
                                         <a href="book-page.php?bookID=<?=$book['bookID'];?>"><button class="read-button" >Lasīt</button></a>
@@ -168,7 +168,7 @@
                             <?php foreach ($userdata as $user) { ?>
                                 <div class="fav-book">
                                     <div>
-                                        <h2><?= $user['username'] ?> <?= $user['userID'] ?></h2>
+                                        <h2><?= $user['username'] ?></h2>
                                     </div>
                                     <div class="object-to-right-users">
                                         <button class="edit-button">Redigēt</button>
