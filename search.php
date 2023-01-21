@@ -24,7 +24,6 @@
 
     if(isset($_GET['category'])) {
         $str = $_GET['category'];
-        echo $str;
         $sth = "SELECT
                 b.bookID
                 , b.title

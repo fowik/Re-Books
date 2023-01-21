@@ -56,26 +56,11 @@
         header('Location: ./admin.php');
     } 
 
-    // //Books update
-    // if (isset($_GET['edit-book'])) {
-    //     $book_id = $_GET['bookID'];
-    //     print_r($book_id);
-    //     $book = mysqli_query($conn, "SELECT * FROM `books` WHERE `bookID` = '$book_id'");
-    //     $book = mysqli_fetch_assoc($book);
-    //     print_r($book);
-    // }
-
     //Books output
     $books = "SELECT * FROM `books`";
     $books_result = mysqli_query($conn, $books) or die("Connection failed");
         
     for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
-
-    //Users output
-    $users = "SELECT * FROM `users`";
-    $users_result = mysqli_query($conn, $users) or die("Connection failed");
-
-    for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
 
     //User delete
     if (isset($_GET['deluser'])) {
@@ -93,6 +78,31 @@
     $category_result = mysqli_query($conn, $category);
 
     for ($catdata = []; $row = mysqli_fetch_assoc($category_result); $catdata[] = $row);
+
+    //search
+    if(isset($_GET['search'])) {
+        if($_GET['title']) {
+            $str = $_GET['title'];
+            $sth = "SELECT * FROM `books`  WHERE `title` LIKE '%$str%'";
+            
+            $sth_result = mysqli_query($conn, $sth);
+            for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
+        }
+
+        if($_GET['username']) {
+            $str = $_GET['username'];
+            $sth = "SELECT * FROM `users`  WHERE `username` LIKE '%$str%'";
+            
+            $sth_result = mysqli_query($conn, $sth);
+            for ($userdata = []; $row = mysqli_fetch_assoc($sth_result); $userdata[] = $row);
+        }
+    }
+
+     //Users output
+     $users = "SELECT * FROM `users`";
+     $users_result = mysqli_query($conn, $users) or die("Connection failed");
+ 
+     for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
 ?>
 
 
@@ -134,51 +144,71 @@
                     </a>
                 </div>
                 <div class="information-container">
+                    <div id="books">
+                    <form action="" method="POST">
+                        <div class="search-area">
+                                <div class="search-bar">
+                                    <input type="text" name="username" placeholder="Meklēt pēc nosaukuma">
+                                    <button type="submit" name="search">Meklēt</button>
+                                </div>
+                    </form>
 
-                    <div class="search-area">
-                        <div class="search-bar">
-                            <input type="text" placeholder="Meklēt pēc nosaukuma">
-                            <button>Meklēt</button>
+                            <a href="vendor/sign/logout.php" class="leave-button">Iziet</a>
+                            
                         </div>
+                        
+
+                        <div class="books-table scroll">
+                            <div class="fav-book-container">
+                                <?php if(isset($_GET['search'])){
+                                    foreach ($bookdata as $book) { ?>
+                                    <div class="fav-book">
+                                        <div>
+                                            <h2><?= $book['title'] ?></h2>
+                                        </div>
+                                        <div class="object-to-right">
+                                            <a href="book-page.php?bookID=<?=$book['bookID'];?>"><button class="read-button" >Lasīt</button></a>
+                                            <a href="update.php?bookID=<?=$book['bookID'];?>" class="edit-button" name="edit-book">Redigēt</a>
+                                            <a href="?delbook=<?=$book['bookID'];?>">
+                                                <button class="delete-button">Dzēst</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php }?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="users" style="display:none;">
+                        <form action="" method="POST">
+                            <div class="search-area">
+                                
+                                <div class="search-bar">
+                                    <input type="text" name="username" placeholder="Meklēt pēc nosaukuma">
+                                    <button type="submit" name="search">Meklēt</button>
+                                </div>
+                        </form>
 
                         <a href="vendor/sign/logout.php" class="leave-button">Iziet</a>
-                    </div>
-
-                    <div class="books-table scroll" id="books">
-                        <div class="fav-book-container">
-                            <?php foreach ($bookdata as $book) { ?>
-                                <div class="fav-book">
-                                    <div>
-                                        <h2><?= $book['title'] ?></h2>
+                        
+                            </div>
+                        
+                        <div class="books-table scroll">
+                            <div class="fav-book-container">
+                                <?php foreach ($userdata as $user) { ?>
+                                    <div class="fav-book">
+                                        <div>
+                                            <h2><?= $user['username'] ?></h2>
+                                        </div>
+                                        <div class="object-to-right-users">
+                                            <button class="edit-button">Redigēt</button>
+                                            <a href="?deluser=<?=$user['userID'];?>"><button class="delete-button">Dzēst</button></a>
+                                        </div>
                                     </div>
-                                    <div class="object-to-right">
-                                        <a href="book-page.php?bookID=<?=$book['bookID'];?>"><button class="read-button" >Lasīt</button></a>
-                                        <a href="update.php?bookID=<?=$book['bookID'];?>" class="edit-button" name="edit-book">Redigēt</a>
-                                        <a href="?delbook=<?=$book['bookID'];?>">
-                                            <button class="delete-button">Dzēst</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php }?>
+                                <?php }?>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="books-table scroll" id="users" style="display:none;">
-                        <div class="fav-book-container">
-                            <?php foreach ($userdata as $user) { ?>
-                                <div class="fav-book">
-                                    <div>
-                                        <h2><?= $user['username'] ?></h2>
-                                    </div>
-                                    <div class="object-to-right-users">
-                                        <button class="edit-button">Redigēt</button>
-                                        <a href="?deluser=<?=$user['userID'];?>"><button class="delete-button">Dzēst</button></a>
-                                    </div>
-                                </div>
-                            <?php }?>
-                        </div>
-                    </div>
-                    
                     <button class="add-button" id="add-button" onclick="addBook()">Pievienot</button>
                     
                     <!-- <div class="editPopup" id="editPopup" style="display:none;">
