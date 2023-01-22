@@ -65,7 +65,6 @@
             <div class="main">
                 <h1 class="title">Meklēšanas rezultāti "<?php echo $str?>"</h1>
                 <div class="main-book-row">
-                <br><br>
                 <?php if($sthdata) {
                     foreach ($sthdata as $row) {?>
                     <div class="book-row">
