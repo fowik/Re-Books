@@ -21,6 +21,18 @@
     } else {
         $avg = $total / $numR;
     }
+
+    //Books click
+    if (isset($book_id)) {
+        $sql = "SELECT clicks FROM `books` WHERE bookID = '$book_id'";
+        $sql_result = mysqli_query($conn, $sql);
+        $sql_result = mysqli_fetch_assoc($sql_result);
+        $click = $sql_result['clicks'];
+        $click++;
+
+        $sql = "UPDATE `books` SET `clicks` = '$click' WHERE bookID = '$book_id'";
+        $sql_result = mysqli_query($conn, $sql);
+    }
 ?>
 
 <!DOCTYPE html>
