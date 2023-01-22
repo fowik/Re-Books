@@ -8,16 +8,12 @@
 }
 
 .main-book-row {
-    display: flex;
-    width: auto;
-    height: auto;
-}
-
-.main {
-    overflow: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
 }
 
 .title {
+    display: block;
     padding-left: 30px;
     padding-top: 25px;
 }
