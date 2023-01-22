@@ -76,7 +76,6 @@
                     </div>
 
                     <div class="button-read">
-                    <?=$book_id;?>
                         <a href="">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievienot</a>
                         <?php 
                             if (isset($_SESSION['message'])) {
