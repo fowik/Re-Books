@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `books` (
 
 -- Дамп данных таблицы re-books.books: ~2 rows (приблизительно)
 INSERT INTO `books` (`bookID`, `title`, `author`, `description`, `image`, `category`, `date`, `clicks`) VALUES
-	(29, 'FOOL MAN', 'Robert Rodriques', 'nav', 'uploads/1674072153cover1__w220.jpg', 'Fantastika', '2023-01-04', NULL),
-	(30, 'f', 'f', 'f', 'uploads/16740731001003w-4he1eqkeAQg.webp', 'Fantāzija', '2023-01-04', NULL),
-	(31, 'asdas', 'dasdasd', 'asdasd', 'uploads/1674306985Обложка_книги_Александра_Ворошилова_Первая_победа.jpg', 'Mīlas romāni', '2023-01-07', NULL);
+	(29, 'FOOL MAN', 'Robert Rodriques', 'nav', 'uploads/1674072153cover1__w220.jpg', 'Fantastika', '2023-01-04', 16),
+	(30, 'f', 'f', 'f', 'uploads/16740731001003w-4he1eqkeAQg.webp', 'Fantāzija', '2023-01-04', 1),
+	(31, 'asdas', 'dasdasd', 'asdasd', 'uploads/1674306985Обложка_книги_Александра_Ворошилова_Первая_победа.jpg', 'Mīlas romāni', '2023-01-07', 5);
 
 -- Дамп структуры для таблица re-books.category
 CREATE TABLE IF NOT EXISTS `category` (
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы re-books.users: ~3 rows (приблизительно)
+-- Дамп данных таблицы re-books.users: ~4 rows (приблизительно)
 INSERT INTO `users` (`userID`, `email`, `username`, `password`, `admin`) VALUES
 	(13, 'ilarimsa937@gmail.com', 'fowik', '202cb962ac59075b964b07152d234b70', 1),
 	(14, 'cheaterrrrr123@gmail.com', 'zerlog', '202cb962ac59075b964b07152d234b70', 0),
