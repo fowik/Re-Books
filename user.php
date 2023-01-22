@@ -31,9 +31,7 @@
     
     $favoruites_result = mysqli_query($conn, $favoruites) or die("Connection failed");
     
-    for ($favoruitedata = []; $row = mysqli_fetch_assoc($favoruites_result); $favoruitedata[] = $row) {
-
-    };
+    for ($favoruitedata = []; $row = mysqli_fetch_assoc($favoruites_result); $favoruitedata[] = $row);
 
     //book delete from favourites
     if (isset($_GET['delfav'])) {
@@ -43,6 +41,34 @@
         //echo $books_del;
         mysqli_query($conn, $books_del) or die(mysqli_error($conn));
         header('Location: ./admin.php');
+    }
+
+    //Favourite book search
+    if(isset($_POST['search-book'])) {
+        $bookstr = $_POST['title'];
+        if(($bookstr === "")) {
+            $books = "SELECT * 
+            FROM `favourites` AS f
+            INNER JOIN `books` AS b
+                ON f.FK_booksID = b.bookID
+            INNER JOIN `users` AS u
+                ON f.FK_userID = u.userID
+            WHERE f.FK_userID = '$user_id'";
+            $books_result = mysqli_query($conn, $books) or die("Connection failed");
+            
+            for ($favoruitedata = []; $row = mysqli_fetch_assoc($books_result); $favoruitedata[] = $row);
+        } else {
+            $sth = "SELECT * 
+            FROM `favourites` AS f
+            INNER JOIN `books` AS b
+                ON f.FK_booksID = b.bookID
+            INNER JOIN `users` AS u
+                ON f.FK_userID = u.userID
+            WHERE f.FK_userID = '$user_id' AND b.`title` LIKE '%$bookstr%'";
+            
+            $sth_result = mysqli_query($conn, $sth);
+            for ($favoruitedata = []; $row = mysqli_fetch_assoc($sth_result); $favoruitedata[] = $row);
+        }
     }
 ?>
 
@@ -77,15 +103,16 @@
                     </a>
                 </div>
                 <div class="information-container">
-                    
-                    <div class="search-area">
-                        <div class="search-bar">
-                            <input type="text" placeholder="Meklēt...">
-                            <button>Meklēt</button>
+                    <form method="POST">
+                        <div class="search-area">
+                            <div class="search-bar">
+                                <input type="text" name="title" placeholder="Meklēt...">
+                                <button type="submit" name="search-book">Meklēt</button>
+                            </div>
+                        
+                    </form>
+                            <a class="leave-button" href="vendor/sign/logout.php">Iziet</a>
                         </div>
-                        <!-- <h2><?= $_SESSION['user']['username']?></h2> -->
-                        <a class="leave-button" href="vendor/sign/logout.php">Iziet</a>
-                    </div>
 
                     <div class="books-table scroll">
 
