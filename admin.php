@@ -62,6 +62,12 @@
         
     for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
 
+    //Users output
+    $users = "SELECT * FROM `users`";
+    $users_result = mysqli_query($conn, $users) or die("Connection failed");
+ 
+    for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
+
     //User delete
     if (isset($_GET['deluser'])) {
         $user_id = $_GET['deluser'];
@@ -79,32 +85,38 @@
 
     for ($catdata = []; $row = mysqli_fetch_assoc($category_result); $catdata[] = $row);
 
-    //search
-    if(isset($_POST['search'])) {
-        if($_POST['name']) {
-            $str = $_POST['name'];
-            $sth = "SELECT * FROM `books`  WHERE `title` LIKE '%$str%'";
-            
-            $sth_result = mysqli_query($conn, $sth);
-            for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
+    //Search for book
+    if(isset($_POST['search-book'])) {
+        $bookstr = $_POST['title'];
+        if(($bookstr === "")) {
+            $books = "SELECT * FROM `books`";
+            $books_result = mysqli_query($conn, $books) or die("Connection failed");
+                
+            for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
         } else {
-            echo 'nav';
-        }
-
-        if($_POST['username']) {
-            $str = $POST['username'];
-            $sth = "SELECT * FROM `users` WHERE `username` LIKE '%$str%'";
+            $sth = "SELECT * FROM `books` WHERE `title` LIKE '%$bookstr%'";
             
             $sth_result = mysqli_query($conn, $sth);
-            for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
+            for ($bookdata = []; $row = mysqli_fetch_assoc($sth_result); $bookdata[] = $row);
         }
     }
 
-     //Users output
-     $users = "SELECT * FROM `users`";
-     $users_result = mysqli_query($conn, $users) or die("Connection failed");
- 
-     for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
+    //Search for user
+    if(isset($_POST['search-user'])) {
+        $userstr = $_POST['username'];
+
+        if(($userstr === "")) {
+            $users = "SELECT * FROM `users`";
+            $users_result = mysqli_query($conn, $users) or die("Connection failed");
+
+            for ($userdata = []; $row = mysqli_fetch_assoc($users_result); $userdata[] = $row);
+        } else {
+            $sth = "SELECT * FROM `users` WHERE `username` LIKE '%$userstr%'";
+
+            $sth_result = mysqli_query($conn, $sth);
+            for ($userdata = []; $row = mysqli_fetch_assoc($sth_result); $userdata[] = $row);
+        }
+    }
 ?>
 
 
@@ -147,11 +159,11 @@
                 </div>
                 <div class="information-container">
                     <div id="books">
-                    <form action="" method="POST">
+                    <form method="POST">
                         <div class="search-area">
                                 <div class="search-bar">
-                                    <input type="text" name="name" placeholder="Meklēt pēc nosaukuma">
-                                    <button type="submit" name="search">Meklēt</button>
+                                    <input type="text" name="title" placeholder="Meklēt pēc nosaukuma">
+                                    <button type="submit" name="search-book">Meklēt</button>
                                 </div>
                     </form>
 
@@ -161,8 +173,7 @@
 
                         <div class="books-table scroll">
                             <div class="fav-book-container">
-                                <?php if(isset($_POST['search'])) {
-                                    foreach ($sthdata as $book) { ?>
+                                <?php foreach ($bookdata as $book) {?>
                                     <div class="fav-book">
                                         <div>
                                             <h2><?= $book['title'] ?></h2>
@@ -175,32 +186,17 @@
                                             </a>
                                         </div>
                                     </div>
-                                <?php }} else {
-                                    foreach ($bookdata as $book) { ?>
-                                    <div class="fav-book">
-                                        <div>
-                                            <h2><?= $book['title'] ?></h2>
-                                        </div>
-                                        <div class="object-to-right">
-                                            <a href="book-page.php?bookID=<?=$book['bookID'];?>"><button class="read-button" >Lasīt</button></a>
-                                            <a href="update.php?bookID=<?=$book['bookID'];?>" class="edit-button" name="edit-book">Redigēt</a>
-                                            <a href="?delbook=<?=$book['bookID'];?>">
-                                                <button class="delete-button">Dzēst</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php }}?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
 
                     <div id="users" style="display:none;">
-                        <form action="" method="POST">
+                        <form method="POST">
                             <div class="search-area">
-                                
                                 <div class="search-bar">
                                     <input type="text" name="username" placeholder="Meklēt pēc nosaukuma">
-                                    <button type="submit" name="search">Meklēt</button>
+                                    <button type="submit" name="search-user">Meklēt</button>
                                 </div>
                         </form>
 
@@ -220,7 +216,7 @@
                                             <a href="?deluser=<?=$user['userID'];?>"><button class="delete-button">Dzēst</button></a>
                                         </div>
                                     </div>
-                                <?php }?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
