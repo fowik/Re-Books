@@ -94,8 +94,7 @@
     <link rel="stylesheet" href="./assets/css/book.css">
     <link rel="stylesheet" href="./assets/css/index.css">
     <link href="http://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
     <title>Re-Books</title>
 </head>
 <body>
@@ -160,14 +159,14 @@
             <hr color="#34344A">
             <div class="slider swiper">
                 <div class="new-books">
-                    <h1>Jaunākās</h1>
+                    <h1>Visaugstāk novērtētās</h1>
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <?php foreach ($newbookdata as $book) { ?>
+                        <?php foreach ($ratedbookdata as $book) { ?>
                                 <div class="swiper-slide">
                                     <div class="book-cover mySwiper">
                                         <span class="link">
-                                            <a href="book-page.php?bookID=<?= $book['bookID']; ?>" method="POST" name="clicks">
+                                            <a href="book-page.php?bookID=<?=$book['bookID'];?>" name="clicks">
                                                 <div class="book-img slide">
                                                     <img src="<?= $book['image']?>" alt="" width="170px" height="220px">
                                                 </div>
@@ -232,8 +231,9 @@
         <?php include './assets/views/footer.html';?>
         
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./assets/js/jquery.js"></script>
+    
 
 </body>
 </html>

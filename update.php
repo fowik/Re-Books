@@ -44,10 +44,10 @@
                 <br>
                 <input type="file" name="image">
                 <p>Kategorija</p>
-                <select name="Category" id="category" style = "z-index: auto ; " onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                <select name="Category" style = "z-index: auto ; " onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                     <option value="category" disabled selected><?= $book['category'] ?></option>
                     <?php foreach ($catdata as $cat) { ?>
-                        <option name="category"><?= $cat['CategName'] ?></option>
+                        <option name="Category"><?= $cat['CategName'] ?></option>
                     <?php }?>
                 </select>
                 <p>Datums</p>

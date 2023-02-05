@@ -11,10 +11,10 @@ var swiper = new Swiper(".mySwiper", {
     spaceBetween: 20,
     freeMode: true,
     scrollbar: {
-      el: ".swiper-scrollbar",
-      hide: true,
+        el: ".swiper-scrollbar",
+        hide: true,
     },
-  });
+});
 
 function pieslegties() { 
 	document.getElementById("registracija").style.display="none"; 
