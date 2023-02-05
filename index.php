@@ -57,6 +57,7 @@
     LEFT JOIN (SELECT FK_bookID AS 'book_ID', COUNT(rateIndex) AS 'cout' FROM ratingsystem GROUP BY FK_bookID) AS cout
         ON r.FK_bookID = cout.book_ID
     GROUP BY cout.book_ID, b.bookID, cout.cout
+    HAVING total > 0
     ORDER BY b.clicks DESC
     LIMIT 7";
     $books_result = mysqli_query($conn, $books) or die("Connection failed");
