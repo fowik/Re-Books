@@ -64,7 +64,7 @@
                 </div>
             </div>
                     <div class="book-content">
-                    <h1><?= $book_result['title']; ?></h1>
+                    <h1 class = "title"><?= $book_result['title']; ?></h1>
                     <h2><?= $book_result['author']; ?></h2>
                     Vērtējums: 
                     <div class="rating" data-total-value="<?php echo round($avg, 0) ?>">

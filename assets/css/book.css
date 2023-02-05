@@ -37,6 +37,9 @@
     font-size: 14px;
     margin-top: 8px;
     margin-left: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .author {

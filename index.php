@@ -1,6 +1,4 @@
 <?php
-
-
     session_start();
     require_once "vendor/connect.php";
 
@@ -162,14 +160,14 @@
             <hr color="#34344A">
             <div class="slider swiper">
                 <div class="new-books">
-                    <h1>Visaugstāk novērtētās</h1>
+                    <h1>Jaunākās</h1>
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                        <?php foreach ($ratedbookdata as $book) { ?>
+                            <?php foreach ($newbookdata as $book) { ?>
                                 <div class="swiper-slide">
                                     <div class="book-cover mySwiper">
                                         <span class="link">
-                                            <a href="book-page.php?bookID=<?=$book['bookID'];?>" name="clicks">
+                                            <a href="book-page.php?bookID=<?= $book['bookID']; ?>" method="POST" name="clicks">
                                                 <div class="book-img slide">
                                                     <img src="<?= $book['image']?>" alt="" width="170px" height="220px">
                                                 </div>

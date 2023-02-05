@@ -22,6 +22,12 @@
     margin-top: 110px;
 }
 
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .button-read a {
     background-color: #23A962;
     border-style: none;
