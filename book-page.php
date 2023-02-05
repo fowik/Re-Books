@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="button-read">
-                        <a href="">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievienot</a>
+                        <a href="" download="<?= $book_result['title']; ?>">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievienot</a>
                         <?php 
                             if (isset($_SESSION['message'])) {
                             echo '<p class="msg"> ' . $_SESSION['message'] .'</p>';
