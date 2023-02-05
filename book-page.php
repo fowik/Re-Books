@@ -89,7 +89,7 @@
 
             <div class="book-description">
                 <h1>Apraksts</h1>
-                <p><?= $book_result['description']; ?></p>
+                <span class="description"><?= $book_result['description']; ?></span>
             </div>
         </div>
 
