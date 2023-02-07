@@ -57,7 +57,7 @@
     } 
 
     //Books output
-    $books = "SELECT * FROM `books`";
+    $books = "SELECT * FROM `books` ORDER BY title ASC";
     $books_result = mysqli_query($conn, $books) or die("Connection failed");
         
     for ($bookdata = []; $row = mysqli_fetch_assoc($books_result); $bookdata[] = $row);
@@ -212,7 +212,7 @@
                                             <h2><?= $user['username'] ?></h2>
                                         </div>
                                         <div class="object-to-right-users">
-                                            <button class="edit-button">Redigēt</button>
+                                            <a href="updateuser.php?userID=<?=$user['userID'];?>"><button class="edit-button">Redigēt</button></a>
                                             <a href="?deluser=<?=$user['userID'];?>"><button class="delete-button">Dzēst</button></a>
                                         </div>
                                     </div>

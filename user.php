@@ -18,7 +18,7 @@
         }
     }
 
-    //favourite books output
+    //Favourite books output
     $user_id = $_SESSION['user']['userID'];
 
     $favoruites = "SELECT * 
@@ -27,13 +27,14 @@
         ON f.FK_booksID = b.bookID
     INNER JOIN `users` AS u
         ON f.FK_userID = u.userID
-    WHERE f.FK_userID = '$user_id'";
+    WHERE f.FK_userID = '$user_id'
+    ORDER BY b.title ASC";
     
     $favoruites_result = mysqli_query($conn, $favoruites) or die("Connection failed");
     
     for ($favoruitedata = []; $row = mysqli_fetch_assoc($favoruites_result); $favoruitedata[] = $row);
 
-    //book delete from favourites
+    //Book delete from favourites
     if (isset($_GET['delfav'])) {
         $favourite_id = $_GET['delfav'];
 

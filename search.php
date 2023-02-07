@@ -1,7 +1,8 @@
 <?php 
     session_start();
     require_once "vendor/connect.php";
-
+    
+    //Search by title
     if(isset($_GET['title'])) {
         $str = $_GET['title'];
         $sth = "SELECT
@@ -22,8 +23,12 @@
         for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
     }
 
+    //Search by category
     if(isset($_GET['category'])) {
         $str = $_GET['category'];
+        if ($str === "") {
+            header("Location: index.php");
+        }
         $sth = "SELECT
                 b.bookID
                 , b.title
@@ -41,7 +46,7 @@
         $sth_result = mysqli_query($conn, $sth);
         for ($sthdata = []; $row = mysqli_fetch_assoc($sth_result); $sthdata[] = $row);
     }
-        
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -168,6 +168,9 @@ h1 span {
     margin: 0;
     width: 30%;
     padding: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
 }
 
 .object-to-right {

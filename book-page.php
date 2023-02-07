@@ -74,9 +74,18 @@
                         <div class="rating-item" data-item-value="2">★</div>
                         <div class="rating-item" data-item-value="1">★</div>
                     </div>
-
+                    
                     <div class="button-read">
-                        <a href="" download="<?= $book_result['title']; ?>.pdf">Lasīt</a> <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievienot</a>
+                    
+                        <?php
+                            //Session check for download
+                            if (isset($_SESSION['user'])) {
+                                echo '<a href="" download="' . $book_result["title"] . ".pdf" . '">Lasīt</a>';
+                            } else{ 
+                                echo '<a>Lasīt</a>';
+                            }
+                        ?>
+                        <a href="vendor/addfavourites.php?bookID=<?=$book_id;?>">Pievienot</a>
                         <?php 
                             if (isset($_SESSION['message'])) {
                             echo '<p class="msg"> ' . $_SESSION['message'] .'</p>';

@@ -76,12 +76,16 @@
     if (isset($_POST["submit"])) {
         $str = $_POST["search"];
         $categ = $_POST["category"];
-        if($str === ''){
+        print_r($categ);
+
+        if(!($categ === "Kategorijas")) {
             header("Location: search.php?category=$categ");
-        } else {
+        }
+    
+        if(!($str === "")){
             header("Location: search.php?title=$str");
         }
-    } 
+    }
 
 ?>
 
