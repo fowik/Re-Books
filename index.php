@@ -81,7 +81,7 @@
         if(!($categ === "Kategorijas")) {
             header("Location: search.php?category=$categ");
         }
-    
+        
         if(!($str === "")){
             header("Location: search.php?title=$str");
         }

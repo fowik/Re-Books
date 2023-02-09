@@ -43,12 +43,19 @@
         header("Location: ../../register.php");
         exit();
     }
-
+    
+    $query = mysqli_query($conn, "SELECT * FROM `users`");
+    if(mysqli_num_rows($query) === 0) {
+        $admin = 1;
+    } else {
+        $admin = 0;
+    }
+    
     $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username' OR email='$email'");
     //User exist
     if (mysqli_num_rows($query) == 0) {
         $password = md5($password);
-
+        
         mysqli_query($conn, "INSERT INTO `users` (`email`, `username`, `password`, `admin`) VALUES ('$email', '$username', '$password', '$admin');");
                                     
         $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
