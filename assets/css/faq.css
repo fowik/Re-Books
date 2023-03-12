@@ -1,13 +1,19 @@
 .user_instruction {
-    margin-left: 20px;
     margin-right: 10px;
+    margin-bottom: 40px;
 }
 
 .admin_instruction {
-    margin-left: 20px;
     margin-right: 10px;
+    margin-bottom: 40px;
 }
 
 li {
-    margin-top: 10px;
+    margin-top: 25px;
+    font: bold 17px sans-serif;
+}
+
+p {
+    margin-top: -25px;
+    font: 16px 'Roboto';
 }
