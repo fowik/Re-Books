@@ -19,6 +19,4 @@
     } else {
         echo 'register';
     }
-
-
 ?>
